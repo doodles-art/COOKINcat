@@ -17,6 +17,7 @@ config/icon="res://Sprites/icon.svg"
 
 [display]
 
+window/size/resizable=false
 window/stretch/aspect="ignore"
 
 [dotnet]
