@@ -1,0 +1,24 @@
+extends Control
+
+var database : SQLite # Definimos que database es una variable de tipo SQLLITE
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	database=SQLite.new() #Creamos la base de datos en esta variable
+	
+	database.path="user://CookinCatDATABASE.db" #le indicamos donde se encuentra (user-> para que lo lea del disco y detecte mejor los cambios
+	database.open_db() #Para asi abrirla y poder conocer su contenido
+	
+	#comprobacion (con consultas)
+	database.query("SELECT name FROM sqlite_master WHERE type='table';")
+	print("Tablas encontradas:", database.query_result)
+
+
+	
+
+	pass # Replace with function body.
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

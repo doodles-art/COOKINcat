@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="COOKINCAT"
+run/main_scene="uid://c4f255pftk2mj"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/icon.svg"
+
+[display]
+
+window/stretch/aspect="ignore"
 
 [dotnet]
 
@@ -22,6 +27,15 @@ project/assembly_name="COOKINCAT"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://ADDONS/": "gray",
+"res://DATABASE/": "blue",
+"res://ESCENAS/": "purple",
+"res://Sprites/": "green"
+}
 
 [physics]
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c4f255pftk2mj"]
+
+[ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="1_4ua3w"]
+
+[node name="Node2D" type="Node2D" unique_id=948398296]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=725854740]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 157.0
+offset_top = 27.0
+offset_right = 992.0
+offset_bottom = 605.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_4ua3w")
+expand_mode = 1
+stretch_mode = 1
