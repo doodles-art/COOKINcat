@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://psbge2tun5jt"]
+
+[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://ESCENAS/MenuPausa.tscn" id="1_ity61"]
+
+[node name="PantallaTienda" type="Node2D" unique_id=1826137405]
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=984988321]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 249.0
+offset_top = 205.0
+offset_right = 884.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Pantalla tienda"
+
+[node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("1_ity61")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 852.48
+offset_bottom = 185.97597
