@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bu1qxl1uf3pk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmo38"]
+bg_color = Color(3.1180065, 3.6045651, 3.4777496, 1)
+border_width_bottom = 13
+border_color = Color(0.5233074, 0.43078747, 0.32901555, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Inventario" type="Control" unique_id=1657832901]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control_Inventario" type="Control" parent="." unique_id=1169415637]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control_Inventario" unique_id=1606128523]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.1
+anchor_top = 1.0
+anchor_right = 26.800003
+anchor_bottom = 5.3750005
+offset_right = -0.00012207031
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qmo38")
+metadata/_edit_use_anchors_ = true

@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 	database=SQLite.new() #Creamos la base de datos en esta variable
 	
-	database.path="user://CookinCatDATABASE.db" #le indicamos donde se encuentra (user-> para que lo lea del disco y detecte mejor los cambios
+	database.path="res://DATABASE//CookinCatDATABASE.db" #le indicamos donde se encuentra (user-> para que lo lea del disco y detecte mejor los cambios
 	database.open_db() #Para asi abrirla y poder conocer su contenido
 	
 	#comprobacion (con consultas)

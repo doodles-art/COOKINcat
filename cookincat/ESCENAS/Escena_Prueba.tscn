@@ -22,6 +22,7 @@ size_flags_horizontal = 4
 texture = ExtResource("1_4ua3w")
 expand_mode = 1
 stretch_mode = 1
+script = ExtResource("2_bdbev")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=436971166]
 anchors_preset = 8
