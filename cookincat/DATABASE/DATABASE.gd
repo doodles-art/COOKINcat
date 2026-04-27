@@ -14,6 +14,14 @@ func _ready() -> void:
 	database.query("SELECT name FROM sqlite_master WHERE type='table';")
 	print("Tablas encontradas:", database.query_result)
 	
+	database.query("SELECT Nombre FROM CULTIVO")
+	print(database.query_result)
+
+
+	
+
+	pass # Replace with function body.
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
