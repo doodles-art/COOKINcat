@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="1_4ua3w"]
 [ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://ESCENAS/MenuPausa.tscn" id="2_dailb"]
+[ext_resource type="Script" uid="uid://ccfkxycl8ijc3" path="res://ESCENAS/menu_inicial.gd" id="3_bdbev"]
 
 [node name="Node2D" type="Node2D" unique_id=948398296]
 
@@ -28,16 +29,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 462.0
-offset_top = 273.0
-offset_right = 693.0
-offset_bottom = 387.0
+offset_left = 414.0
+offset_top = 278.0
+offset_right = 645.0
+offset_bottom = 392.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Jueguito jeje"
+text = "Jueguito ojo"
 
 [node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("2_dailb")]
 offset_left = 0.0
 offset_top = -4.0
 offset_right = 852.48
 offset_bottom = 181.97597
+
+[node name="Menu_Inicial" type="Control" parent="." unique_id=763579093]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 463.0
+offset_top = 156.0
+offset_right = 503.0
+offset_bottom = 196.0
+script = ExtResource("3_bdbev")
+
+[node name="PLAY" type="Button" parent="Menu_Inicial" unique_id=227535976]
+layout_mode = 0
+offset_right = 162.0
+offset_bottom = 74.0
+text = "PLAY"
+
+[node name="OPTIONS" type="Button" parent="Menu_Inicial" unique_id=1332039213]
+layout_mode = 0
+offset_left = -463.0
+offset_top = -156.0
+offset_right = -455.0
+offset_bottom = -148.0
+
+[node name="EXIT GAME" type="Button" parent="Menu_Inicial" unique_id=2019605486]
+layout_mode = 0
+offset_left = -463.0
+offset_top = -156.0
+offset_right = -455.0
+offset_bottom = -148.0
