@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://psbge2tun5jt"]
 
-[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://ESCENAS/MenuPausa.tscn" id="1_ity61"]
+[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="1_ity61"]
 
 [node name="PantallaTienda" type="Node2D" unique_id=1826137405]
 

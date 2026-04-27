@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c4f255pftk2mj"]
 
 [ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="1_4ua3w"]
-[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://ESCENAS/MenuPausa.tscn" id="2_dailb"]
+[ext_resource type="Script" uid="uid://drv1cmxeyffsx" path="res://DATABASE/DATABASE.gd" id="2_bdbev"]
+[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_dailb"]
 
 [node name="Node2D" type="Node2D" unique_id=948398296]
 
@@ -21,6 +22,7 @@ size_flags_horizontal = 4
 texture = ExtResource("1_4ua3w")
 expand_mode = 1
 stretch_mode = 1
+script = ExtResource("2_bdbev")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=436971166]
 anchors_preset = 8
