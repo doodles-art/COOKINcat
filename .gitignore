@@ -7,6 +7,9 @@
 export.cfg
 export_credentials.cfg
 
+# Ignorar DLLs del plugin SQLite (evita conflictos)
+cookincat/ADDONS/godot-sqlite/bin/*.dll
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 
