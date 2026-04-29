@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://w15m5u6bcws2"]
+
+[node name="MenuOpciones" type="Control" unique_id=100854691]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1221456476]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 472.0
+offset_right = 812.0
+offset_bottom = 534.0
