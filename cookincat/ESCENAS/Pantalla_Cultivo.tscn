@@ -1,20 +1,30 @@
-[gd_scene format=3 uid="uid://djm247wbxgkq"]
+[gd_scene format=3 uid="uid://c71hykwyvdmit"]
 
-[ext_resource type="Script" uid="uid://drv1cmxeyffsx" path="res://DATABASE/DATABASE.gd" id="1_oimwp"]
-[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="1_uovjv"]
+[ext_resource type="Script" uid="uid://d2152jwq7l8jh" path="res://SCRIPTS/Pantalla_Cultivo.gd" id="1_oimwp"]
+[ext_resource type="PackedScene" uid="uid://cqpgb6sbeyjlb" path="res://ESCENAS/MenuPausa.tscn" id="1_uovjv"]
 
 [node name="PantallaCultivo" type="Node2D" unique_id=238280805]
+script = ExtResource("1_oimwp")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=89679884]
 offset_left = 260.0
-offset_top = 158.0
+offset_top = 86.0
 offset_right = 836.0
-offset_bottom = 480.0
+offset_bottom = 408.0
 text = "Pantalla cultivo"
-script = ExtResource("1_oimwp")
 
 [node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("1_uovjv")]
+visible = false
 offset_left = 0.0
 offset_top = 2.0
 offset_right = 852.48
 offset_bottom = 187.97597
+
+[node name="BACK" type="Button" parent="." unique_id=315509002]
+offset_left = 471.0
+offset_top = 304.0
+offset_right = 602.0
+offset_bottom = 371.0
+text = "BACK"
+
+[connection signal="pressed" from="BACK" to="." method="on_BACK_pressed"]
