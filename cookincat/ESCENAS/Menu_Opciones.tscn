@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://w15m5u6bcws2"]
+
+[ext_resource type="Script" uid="uid://dwvsktfabxnlv" path="res://SCRIPTS/menu_opciones.gd" id="1_82tm6"]
+[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_72jb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72jb1"]
+bg_color = Color(0, 0.68133634, 0.72253156, 1)
+
+[node name="MenuOpciones" type="Control" unique_id=100854691]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_82tm6")
+
+[node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("2_72jb1")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -4.0
+offset_right = 852.48004
+offset_bottom = 181.97595
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1221456476]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 298.0
+offset_right = 833.0
+offset_bottom = 360.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1549602873]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 191.0
+offset_right = 831.0
+offset_bottom = 268.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_72jb1")
+
+[node name="Label" type="Label" parent="Panel" unique_id=599685378]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.51900005
+anchor_right = 0.5
+anchor_bottom = 0.51900005
+offset_left = -257.5
+offset_top = -19.963005
+offset_right = 260.0
+offset_bottom = 20.036995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 29
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="BACK" type="Button" parent="." unique_id=1032223700]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 410.0
+offset_right = 686.0
+offset_bottom = 525.0
+theme_override_font_sizes/font_size = 27
+text = "BACK"
+
+[connection signal="pressed" from="BACK" to="." method="on_BACK_pressed"]
