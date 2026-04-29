@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bd43t813lng4q"]
+
+[ext_resource type="Script" uid="uid://qdg56plowhxh" path="res://SCRIPTS/Items_Inventario.gd" id="1_ni38o"]
+[ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="2_uwrjr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd8o0"]
+bg_color = Color(0.8777734, 0.8743343, 0.8769552, 1)
+border_width_bottom = 19
+border_color = Color(0.56071824, 0.8337686, 0.869254, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrjr"]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Inventario" type="Control" unique_id=819066040]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422305998]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=977729931]
+anchors_preset = -1
+anchor_left = 0.081597224
+anchor_top = 0.106481485
+anchor_right = 0.9166667
+anchor_bottom = 0.27932099
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dd8o0")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel" unique_id=692930915]
+layout_mode = 0
+offset_right = 1002.0
+offset_bottom = 131.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/MarginContainer" unique_id=1117335621]
+layout_mode = 2
+columns = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel1" type="Panel" parent="CanvasLayer/Panel/MarginContainer/GridContainer" unique_id=1652069409]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_uwrjr")
+script = ExtResource("1_ni38o")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/Panel/MarginContainer/GridContainer/Panel1" unique_id=608858729]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_left = -11.797409
+offset_top = -8.000004
+offset_right = 116.20259
+offset_bottom = 120.0
+texture = ExtResource("2_uwrjr")
+stretch_mode = 4
