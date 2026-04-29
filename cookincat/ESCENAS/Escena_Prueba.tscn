@@ -60,10 +60,14 @@ offset_right = 229.0
 offset_bottom = 274.0
 text = "OPTIONS"
 
-[node name="EXIT GAME" type="Button" parent="Menu_Inicial" unique_id=2019605486]
+[node name="ExitGAME" type="Button" parent="Menu_Inicial" unique_id=2019605486]
 layout_mode = 0
 offset_left = -46.0
 offset_top = 286.0
 offset_right = 232.0
 offset_bottom = 341.0
 text = "EXIT GAME"
+
+[connection signal="pressed" from="Menu_Inicial/PLAY" to="Menu_Inicial" method="on_PLAY_pressed"]
+[connection signal="pressed" from="Menu_Inicial/OPTIONS" to="Menu_Inicial" method="on_OPTIONS_pressed"]
+[connection signal="pressed" from="Menu_Inicial/ExitGAME" to="Menu_Inicial" method="on_ExitGAME_pressed"]
