@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 	database=SQLite.new() #Creamos la base de datos en esta variable
 	
-	database.path="res://DATABASE//CookinCatDATABASE.db" #le indicamos donde se encuentra (user-> para que lo lea del disco y detecte mejor los cambios
+	database.path="res://DATABASE/DATABASE.gd" #le indicamos donde se encuentra (user-> para que lo lea del disco y detecte mejor los cambios
 	database.open_db() #Para asi abrirla y poder conocer su contenido
 	
 	#comprobacion (con consultas)
@@ -17,11 +17,6 @@ func _ready() -> void:
 	database.query("SELECT Nombre FROM CULTIVO")
 	print(database.query_result)
 
-
-	
-
-	pass # Replace with function body.
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
