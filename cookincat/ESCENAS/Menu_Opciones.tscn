@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://w15m5u6bcws2"]
 
 [ext_resource type="Script" uid="uid://dwvsktfabxnlv" path="res://SCRIPTS/menu_opciones.gd" id="1_82tm6"]
+[ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_72jb1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72jb1"]
 bg_color = Color(0, 0.68133634, 0.72253156, 1)
@@ -13,6 +14,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_82tm6")
+
+[node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("2_72jb1")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -4.0
+offset_right = 852.48004
+offset_bottom = 181.97595
 
 [node name="HSlider" type="HSlider" parent="." unique_id=1221456476]
 layout_mode = 0

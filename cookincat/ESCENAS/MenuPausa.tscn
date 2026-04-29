@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqpgb6sbeyjlb"]
 
-[ext_resource type="Script" path="res://MenuPausa.gd" id="1_m6o1r"]
+[ext_resource type="Script" uid="uid://ut7vwvie4gjb" path="res://SCRIPTS/MenuPausa.gd" id="1_m6o1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqbi0"]
 bg_color = Color(0.61960787, 0.7137255, 0.69803923, 1)
@@ -63,6 +63,7 @@ grow_vertical = 2
 script = ExtResource("1_m6o1r")
 
 [node name="MenuControl" type="Control" parent="." unique_id=1869445117]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
