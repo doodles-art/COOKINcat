@@ -63,7 +63,6 @@ grow_vertical = 2
 script = ExtResource("1_m6o1r")
 
 [node name="MenuControl" type="Control" parent="." unique_id=1869445117]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -151,7 +150,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m6o1r")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_8kpit")
 text = "SAVE"
 
-[connection signal="pressed" from="MenuControl/Continue" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MenuControl/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MenuControl/Continue" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MenuControl/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MenuControl/Save" to="." method="_on_save_pressed"]
