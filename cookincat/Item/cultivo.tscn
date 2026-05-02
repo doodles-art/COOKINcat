@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bs1sgh5hgfa2a"]
+
+[ext_resource type="PackedScene" uid="uid://cxclki4ev0mfj" path="res://Item/item.tscn" id="1_epdmb"]
+
+[node name="Cultivo" unique_id=1149637594 instance=ExtResource("1_epdmb")]

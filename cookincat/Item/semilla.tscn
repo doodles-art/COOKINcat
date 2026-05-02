@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cao0aslytt3wk"]
+
+[ext_resource type="PackedScene" uid="uid://cxclki4ev0mfj" path="res://Item/item.tscn" id="1_5j3ou"]
+[ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="2_1g28h"]
+
+[node name="Semilla" unique_id=1149637594 instance=ExtResource("1_5j3ou")]
+
+[node name="Sprite2D" parent="." index="1" unique_id=246795470]
+scale = Vector2(0.1171875, 0.125)
+texture = ExtResource("2_1g28h")

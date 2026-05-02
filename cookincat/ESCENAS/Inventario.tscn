@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd43t813lng4q"]
 
-[ext_resource type="Script" uid="uid://qdg56plowhxh" path="res://SCRIPTS/Items_Inventario.gd" id="1_ni38o"]
-[ext_resource type="Texture2D" uid="uid://dhxm1f3sv6l2h" path="res://Sprites/icon.svg" id="2_uwrjr"]
+[ext_resource type="PackedScene" uid="uid://bff2lcvkevqig" path="res://UI/slot.tscn" id="1_ni38o"]
+[ext_resource type="Script" uid="uid://cnt0ejopuk18p" path="res://SCRIPTS/inventario.gd" id="1_uwrjr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd8o0"]
 bg_color = Color(0.8777734, 0.8743343, 0.8769552, 1)
@@ -12,12 +12,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrjr"]
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
 [node name="Inventario" type="Control" unique_id=819066040]
 layout_mode = 3
 anchors_preset = 15
@@ -25,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uwrjr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422305998]
 
@@ -42,30 +37,34 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dd8o0")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel" unique_id=692930915]
-layout_mode = 0
-offset_right = 1002.0
-offset_bottom = 131.0
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel" unique_id=2089828898]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.065
+anchor_top = 0.147
+anchor_right = 0.96900004
+anchor_bottom = 0.80300003
+offset_left = -17.129997
+offset_top = 0.05599785
+offset_right = -13.938049
+offset_bottom = -0.056007385
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 132
+theme_override_constants/v_separation = 4
+columns = 5
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/MarginContainer" unique_id=1117335621]
+[node name="Slot5" parent="CanvasLayer/Panel/GridContainer" unique_id=2035143134 instance=ExtResource("1_ni38o")]
 layout_mode = 2
-columns = 6
-metadata/_edit_use_anchors_ = true
 
-[node name="Panel1" type="Panel" parent="CanvasLayer/Panel/MarginContainer/GridContainer" unique_id=1652069409]
-custom_minimum_size = Vector2(100, 100)
+[node name="Slot" parent="CanvasLayer/Panel/GridContainer" unique_id=1499414900 instance=ExtResource("1_ni38o")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_uwrjr")
-script = ExtResource("1_ni38o")
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/Panel/MarginContainer/GridContainer/Panel1" unique_id=608858729]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 0
-offset_left = -11.797409
-offset_top = -8.000004
-offset_right = 116.20259
-offset_bottom = 120.0
-texture = ExtResource("2_uwrjr")
-stretch_mode = 4
+[node name="Slot2" parent="CanvasLayer/Panel/GridContainer" unique_id=1639665755 instance=ExtResource("1_ni38o")]
+layout_mode = 2
+
+[node name="Slot3" parent="CanvasLayer/Panel/GridContainer" unique_id=942020656 instance=ExtResource("1_ni38o")]
+layout_mode = 2
+
+[node name="Slot4" parent="CanvasLayer/Panel/GridContainer" unique_id=1487990146 instance=ExtResource("1_ni38o")]
+layout_mode = 2

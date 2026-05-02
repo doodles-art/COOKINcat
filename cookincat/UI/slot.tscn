@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bff2lcvkevqig"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hhcjw"]
+
+[node name="Slot" type="Panel" unique_id=2035143134]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(70, 70)
+offset_right = 91.0
+offset_bottom = 91.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=309860961]
+modulate = Color(0.7204674, 0.72046757, 0.7204672, 1)
+scale = Vector2(91, 91)
+texture = SubResource("CanvasTexture_hhcjw")
+centered = false
