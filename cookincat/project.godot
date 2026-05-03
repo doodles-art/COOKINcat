@@ -18,6 +18,7 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 Database="*uid://drv1cmxeyffsx"
+Inventario="*uid://cnt0ejopuk18p"
 
 [display]
 

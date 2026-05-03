@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd43t813lng4q"]
 
-[ext_resource type="PackedScene" uid="uid://bff2lcvkevqig" path="res://UI/slot.tscn" id="1_ni38o"]
-[ext_resource type="Script" uid="uid://cnt0ejopuk18p" path="res://SCRIPTS/inventario.gd" id="1_uwrjr"]
+[ext_resource type="PackedScene" uid="uid://bff2lcvkevqig" path="res://UI/bolsillo.tscn" id="1_ni38o"]
+[ext_resource type="Script" uid="uid://crhrvixshjndh" path="res://ESCENAS/inventario_UI.gd" id="1_uwrjr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd8o0"]
 bg_color = Color(0.8777734, 0.8743343, 0.8769552, 1)
@@ -54,17 +54,17 @@ theme_override_constants/h_separation = 132
 theme_override_constants/v_separation = 4
 columns = 5
 
-[node name="Slot5" parent="CanvasLayer/Panel/GridContainer" unique_id=2035143134 instance=ExtResource("1_ni38o")]
+[node name="bolsillo1" parent="CanvasLayer/Panel/GridContainer" unique_id=2035143134 instance=ExtResource("1_ni38o")]
 layout_mode = 2
 
-[node name="Slot" parent="CanvasLayer/Panel/GridContainer" unique_id=1499414900 instance=ExtResource("1_ni38o")]
+[node name="bolsillo2" parent="CanvasLayer/Panel/GridContainer" unique_id=1499414900 instance=ExtResource("1_ni38o")]
 layout_mode = 2
 
-[node name="Slot2" parent="CanvasLayer/Panel/GridContainer" unique_id=1639665755 instance=ExtResource("1_ni38o")]
+[node name="bolsillo3" parent="CanvasLayer/Panel/GridContainer" unique_id=1639665755 instance=ExtResource("1_ni38o")]
 layout_mode = 2
 
-[node name="Slot3" parent="CanvasLayer/Panel/GridContainer" unique_id=942020656 instance=ExtResource("1_ni38o")]
+[node name="bolsillo4" parent="CanvasLayer/Panel/GridContainer" unique_id=942020656 instance=ExtResource("1_ni38o")]
 layout_mode = 2
 
-[node name="Slot4" parent="CanvasLayer/Panel/GridContainer" unique_id=1487990146 instance=ExtResource("1_ni38o")]
+[node name="bolsillo5" parent="CanvasLayer/Panel/GridContainer" unique_id=1487990146 instance=ExtResource("1_ni38o")]
 layout_mode = 2

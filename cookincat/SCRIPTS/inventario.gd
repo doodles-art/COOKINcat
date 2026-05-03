@@ -1,6 +1,6 @@
 extends Control
 
-class_name InventoryManager
+class_name Inventory
 
 var db:SQLite
 var bolsillos: Dictionary={} #como un array pero la busqueda de cada Item se hace de manera mas rapida y simple
@@ -25,7 +25,7 @@ func _cargar_inventario():
 		bolsillo.id_item=row["ID_Item"]
 		bolsillo.cantidad=row["Cantidad"]
 		
-		bolsillos[bolsillo.id_bolsillo]=bolsillo #lo añado con esta info al array/diccionario
+		
 		
 		
 	
