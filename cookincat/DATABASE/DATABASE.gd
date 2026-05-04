@@ -37,8 +37,6 @@ func cargar_DatosItems():
 	
 func cargar_TexturaItems():
 	
-	database.query("SELECT * FROM ITEMS ")
-	
 	#recorremos todo el diccionario de items que creamos antes
 	for i in Diccionario_Item:
 		
@@ -48,15 +46,15 @@ func cargar_TexturaItems():
 			var path:=""
 			
 			if Diccionario_Item[i].tipo=="Semilla": #el objeto es de tipo Semilla
-				path="res://Sprites/Items/%s_semilla.png"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
+				path="res://Sprites/Items/%s_semilla.jpg"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
 				#(para no tener que pasarle la ruta de la textura uno por uno (tardas demasiado :( )
 			
 			if Diccionario_Item[i].tipo=="Cultivo": #El objeto es de tipo Cultivo
-				path="res://Sprites/Items/%s_cultivo.png"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
+				path="res://Sprites/Items/%s_cultivo.jpg"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
 				
 			#guardamos en el resource (en godot)
 			Diccionario_Item[i].icon_texture_path=path #la ruta basada en el tipo y el nombre del item
 			
 			#guardamos en SQL
-			var sql_query="UPDATE ITEMS SET Icono=%s WHERE ID=%s" % [path,i]
+			var sql_query="UPDATE ITEMS SET Icono='%s' WHERE ID=%s" % [path,i]
 			database.query(sql_query)
