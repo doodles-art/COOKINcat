@@ -1,36 +1,50 @@
 [gd_scene format=3 uid="uid://c71hykwyvdmit"]
 
 [ext_resource type="Script" uid="uid://d2152jwq7l8jh" path="res://SCRIPTS/Pantalla_Cultivo.gd" id="1_oimwp"]
+[ext_resource type="Texture2D" uid="uid://q5d6yh0pn8p8" path="res://Sprites/cookinCat_Orchard_fondo.png" id="2_jahj3"]
 [ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_oimwp"]
 [ext_resource type="PackedScene" uid="uid://ct7i4v3jw6f7s" path="res://ESCENAS/Pick_Scene_Orchard.tscn" id="3_cnjq8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bbnb"]
+texture = ExtResource("2_jahj3")
 
 [node name="PantallaCultivo" type="Node2D" unique_id=238280805]
 script = ExtResource("1_oimwp")
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=89679884]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1552744345]
+layer = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1450921885]
+offset_right = 1153.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1bbnb")
+
+[node name="PickEscenas_Orchard" parent="CanvasLayer" unique_id=110809235 instance=ExtResource("3_cnjq8")]
+anchors_preset = -1
+anchor_bottom = 0.99600005
+offset_left = 6.5
+offset_right = -2.0
+offset_bottom = 4.59198
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer" unique_id=89679884]
 offset_left = 475.0
 offset_top = 9.0
 offset_right = 621.0
 offset_bottom = 52.0
 text = "Pantalla cultivo"
 
-[node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("2_oimwp")]
+[node name="MenuPausa" parent="CanvasLayer" unique_id=1834581109 instance=ExtResource("2_oimwp")]
 visible = false
-offset_left = -4.0
-offset_top = -24.0
-offset_right = 848.48
-offset_bottom = 161.97597
+offset_left = -425.63202
+offset_top = -131.56801
+offset_right = 426.84796
+offset_bottom = 54.40796
 
-[node name="PickEscenas_Orchard" parent="." unique_id=110809235 instance=ExtResource("3_cnjq8")]
-offset_left = 6.5
-offset_right = 1154.0
-offset_bottom = 643.0
-
-[node name="BACK" type="Button" parent="." unique_id=315509002]
+[node name="BACK" type="Button" parent="CanvasLayer" unique_id=315509002]
 offset_left = 12.0
 offset_top = 567.0
 offset_right = 143.0
 offset_bottom = 634.0
 text = "BACK"
 
-[connection signal="pressed" from="BACK" to="." method="on_BACK_pressed"]
+[connection signal="pressed" from="CanvasLayer/BACK" to="." method="on_BACK_pressed"]
