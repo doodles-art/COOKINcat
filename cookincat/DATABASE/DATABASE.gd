@@ -14,7 +14,8 @@ func _ready() -> void:
 
 	cargar_DatosItems()#Carga el diccionario con los datos de cada item cada vez quje incie el juego
 	cargar_TexturaItems() #Carga las tcturas de cada item en el Diccionario_Item y en la tabla de SQL (En godot y SQL)
-
+	
+	
 
 func cargar_DatosItems():
 	
@@ -24,37 +25,44 @@ func cargar_DatosItems():
 	#Creo un resource de Godot con los datos de cada fila de la base de datos entre la tabla ITEMS y CULTIVOS
 	for row in database.query_result:
 		var item_dato:=Item.new()
-		item_dato.id=row["ID"]
+		item_dato.id=row["ID_Item"]
 		item_dato.id_cultivo=row["ID_Cultivo"]
 		item_dato.nombre=row["Nombre"]
-		
+		item_dato.icon_texture_path=row["Icono"]
 		item_dato.tipo=row["Tipo"]
 		item_dato.precio=row["Precio"]
 		item_dato.tiempo=row["Tiempo"]
 		
-		print(item_dato.id,item_dato.nombre,item_dato.tipo)#comprobacion
+		
 		Diccionario_Item[item_dato.id]=item_dato #lo añado con esta info al array/diccionario (De sql a godot)
-	
+		
+		
+		
 func cargar_TexturaItems():
 	
 	#recorremos todo el diccionario de items que creamos antes
 	for i in Diccionario_Item:
+		print(i,Diccionario_Item[i].nombre,Diccionario_Item[i].tipo)
 		
-		#si no hemos rellenado todavia la textura y esta vacio
-		if Diccionario_Item[i].icon_texture_path==null:
-			
+		#si no hemos rellenado todavia la textura y esta "vacio" (sin ninguna textura)
+		if Diccionario_Item[i].icon_texture_path=="None":
+			print("none")
+			print(i)
 			var path:=""
 			
 			if Diccionario_Item[i].tipo=="Semilla": #el objeto es de tipo Semilla
 				path="res://Sprites/Items/%s_semilla.jpg"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
 				#(para no tener que pasarle la ruta de la textura uno por uno (tardas demasiado :( )
+				print("semil")
 			
 			if Diccionario_Item[i].tipo=="Cultivo": #El objeto es de tipo Cultivo
+				print("perro")
 				path="res://Sprites/Items/%s_cultivo.jpg"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
+				
 				
 			#guardamos en el resource (en godot)
 			Diccionario_Item[i].icon_texture_path=path #la ruta basada en el tipo y el nombre del item
 			
 			#guardamos en SQL
-			var sql_query="UPDATE ITEMS SET Icono='%s' WHERE ID=%s" % [path,i]
+			var sql_query="UPDATE ITEMS SET Icono='%s' WHERE ID_Item=%s" % [path,i]
 			database.query(sql_query)
