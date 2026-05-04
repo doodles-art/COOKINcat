@@ -59,8 +59,8 @@ func _restarItem(id_objeto:int,cantidad:int)->void:
 			
 			if bolsillo.cantidad>0:
 				while bolsillo.cantidad>0 && cantidad>=0: 
-					bolsillo.cantidad-1
-					cantidad-1
+					bolsillo.cantidad=bolsillo.cantidad-1
+					cantidad=cantidad-1
 					db.query("UPDATE INVENTARIO SET Cantidad=? WHERE ID_Bolsillo=?
 					[bolsillo.cantidad,bolsillo.id_bolsillo]")
 					

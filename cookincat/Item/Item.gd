@@ -9,3 +9,4 @@ class_name Item
 @export var tipo: String
 @export var precio: int
 @export var tiempo: int
+@export var icon_texture_path:String #textura del Item
