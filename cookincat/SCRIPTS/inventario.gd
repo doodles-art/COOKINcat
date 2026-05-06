@@ -2,7 +2,12 @@ extends Control
 
 class_name Inventory
 
+signal sumado #señal para mandar cuando se ha sumado algo al inventario
+signal restado #para cuando se ha restado algo del inventario
+
 var db:SQLite
+
+#lista de los bolsillos del inventario del jugador
 var bolsillos: Dictionary={} #como un array pero la busqueda de cada Item se hace de manera mas rapida y simple
 
 func _ready() -> void:
@@ -12,21 +17,26 @@ func _ready() -> void:
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()
 	
-	
+#cargo el inventario guardado del jugador nada mas comenzar el juego
 func _cargar_inventario():
 	bolsillos.clear() #para no repetir filas las elimino y me aseguro de que no pase esto 
-	
-	db.query("Select * FROM INVENTARIO")
+	#SOLO QUIERO DE CULTIVOS E ITEMS LOS DATOS QUE ME INTERESEN PARA LOS OBJETOS ACTUALES DEL INVENTARIO
+	db.query("Select * FROM INVENTARIO AS INV LEFT JOIN ITEMS AS ITM ON INV.ID_Item=ITM.ID_Item LEFT JOIN CULTIVOS AS CLT ON ITM.ID_Cultivo=CLT.ID")
 	
 	#PASO LA INFORMACION DE CADA FILA DE LA TABLA EN SQLLITE A EL ARRAY/DICCIONARIO EN GODOT (PARA ACCEDER A EL SIN NECESIDAD DE HACER QUERY toDO EL RATO)
 	for row in db.query_result:
 		var bolsillo:=Bolsillo.new() #creo un "objeto" de tipo Bolsillo
 		bolsillo.id_bolsillo=row["ID_Bolsillo"]
 		bolsillo.id_item=row["ID_Item"]
+		bolsillo.tipo=row["Tipo"]
+		bolsillo.icono=row["Icono"]
 		bolsillo.cantidad=row["Cantidad"]
 		
+		#enlazamos el resource item real
+		bolsillo.item=Database.Diccionario_Item[bolsillo.id_bolsillo]
+		bolsillos[bolsillo.id_bolsillo]=bolsillo #lo añado con esta info al inventario (De sql a godot)
 		
-		
+	
 		
 	
 func _sumarItem(id_objeto:int, cantidad:int):

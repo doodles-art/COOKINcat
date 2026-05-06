@@ -6,19 +6,17 @@ signal closed
 
 var isOpen :bool=false
 
-@onready var bolsillos:Array= $CanvasLayer/Panel/GridContainer.get_children() #de esta manera cojo los bolsillos del inventario que contiene el GridContainer
+@onready var bolsillos_ui=$CanvasLayer/Panel/GridContainer.get_children()
+@onready var bolsillos_data:Array[Bolsillo]=[] 
 
 func _ready():
 	update()
 	
 func update():
-	var inv=Inventario.bolsillos.values() #Inventario ->Autoload (puedes acceder al scrip desde cualquier script)
-	for i in range(min(inv.size(),bolsillos.size())):
-		var bolsillo_nodo=bolsillos[i]
-		var item=inv[i]
-		
-		bolsillo_nodo.set_item(item)
-	
+	for i in range(bolsillos_data.size()):
+		var bolsillo_resource=bolsillos_data[i]
+		var bolsillo_ui=bolsillos_ui[i]
+		bolsillo_ui._update(bolsillo_resource) #cargamos en la funcion _update (script bolsillo_ui) el resource que se encuentra en el array bolsillos_data
 
 func open():
 	visible=true

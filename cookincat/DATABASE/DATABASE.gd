@@ -46,17 +46,14 @@ func cargar_TexturaItems():
 		
 		#si no hemos rellenado todavia la textura y esta "vacio" (sin ninguna textura)
 		if Diccionario_Item[i].icon_texture_path=="None":
-			print("none")
-			print(i)
 			var path:=""
 			
 			if Diccionario_Item[i].tipo=="Semilla": #el objeto es de tipo Semilla
 				path="res://Sprites/Items/%s_semilla.jpg"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
 				#(para no tener que pasarle la ruta de la textura uno por uno (tardas demasiado :( )
-				print("semil")
+			
 			
 			if Diccionario_Item[i].tipo=="Cultivo": #El objeto es de tipo Cultivo
-				print("perro")
 				path="res://Sprites/Items/%s_cultivo.jpg"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
 				
 				
