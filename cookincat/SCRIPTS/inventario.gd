@@ -2,8 +2,7 @@ extends Control
 
 class_name Inventory
 
-signal sumado #señal para mandar cuando se ha sumado algo al inventario
-signal restado #para cuando se ha restado algo del inventario
+signal inventario_actualizado
 
 var db:SQLite
 
@@ -35,7 +34,7 @@ func _cargar_inventario():
 		#enlazamos el resource item real
 		bolsillo.item=Database.Diccionario_Item[bolsillo.id_bolsillo]
 		bolsillos[bolsillo.id_bolsillo]=bolsillo #lo añado con esta info al inventario (De sql a godot)
-		
+		emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
 	
 		
 	
@@ -58,10 +57,12 @@ func _sumarItem(id_objeto:int, cantidad:int):
 		bolsillos[nuevo_bolsillo.id_bolsillo]=nuevo_bolsillo #añado este bolsillo con esta info al inventario
 		db.query("INSERT INTO INVENTARIO (ID_Bolsillo,ID_Item,Cantidad) VALUES ([nuevo_bolsillo.id_bolsillo,id_objeto,cantidad])")
 		
-	
-	
+	print("añadio")
+	print(id_objeto,cantidad)
+	emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
 	
 func _restarItem(id_objeto:int,cantidad:int)->void:
+	emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
 	#busco si hay un objeto del mismo tipo en el inventario
 	for bolsillo in bolsillos.values():
 		
