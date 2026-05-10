@@ -16,7 +16,7 @@ func _ready() -> void:
 	db.path="res://DATABASE/CookinCatDATABASE"#le paso la ruta de la Database en el proyecto de Godot
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()
-	
+	print("BD usada: ", db.path)
 #cargo el inventario guardado del jugador nada mas comenzar el juego
 func _cargar_inventario():
 	bolsillos.clear() #para no repetir filas las elimino y me aseguro de que no pase esto 
@@ -26,10 +26,9 @@ func _cargar_inventario():
 	#PASO LA INFORMACION DE CADA FILA DE LA TABLA EN SQLLITE A EL ARRAY/DICCIONARIO EN GODOT (PARA ACCEDER A EL SIN NECESIDAD DE HACER QUERY toDO EL RATO)
 	for row in db.query_result:
 		var bolsillo:=Bolsillo.new() #creo un "objeto" de tipo Bolsillo
+		#son como una referencia al item real en el "diccionario" de items
 		bolsillo.id_bolsillo=row["ID_Bolsillo"]
-		bolsillo.item.id=row["ID_Item"]
-		bolsillo.tipo=row["Tipo"]
-		bolsillo.icono=row["Icono"]
+		bolsillo.item = Database.Diccionario_Item[row["ID_Item"]] #item incluye icono,tipo,precio 
 		bolsillo.cantidad=row["Cantidad"]
 		
 		#enlazamos el resource item real
@@ -51,8 +50,9 @@ func _sumarItem(id_objeto:int, cantidad:int):
 			
 			if(bolsillo.item.id==id_objeto): #lo encuentra
 				bolsillo.cantidad+=cantidad
-				db.query("UPDATE INVENTARIO SET Cantidad=? WHERE ID_Bolsillo=?
-				[bolsillo.cantidad,bolsillo.id_bolsillo]")
+				db.query( "UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
+
+
 				return #sale de la funcion y acaba
 			
 			else:#no lo encuentra (entonces tenemos que crear otro bolsillo con este "nuevo" tipo de dato
@@ -74,11 +74,10 @@ func _restarItem(id_objeto:int,cantidad:int)->void:
 				while bolsillo.cantidad>0 && cantidad>=0: 
 					bolsillo.cantidad=bolsillo.cantidad-1
 					cantidad=cantidad-1
-					db.query("UPDATE INVENTARIO SET Cantidad=? WHERE ID_Bolsillo=?
-					[bolsillo.cantidad,bolsillo.id_bolsillo]")
+					db.query( "UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
 					
 			if bolsillo.cantidad<=0:
-				db.query("DELETE FROM INVENTARIO WHERE ID_Bolsillo=?,[id_bolsillo,bolsillos.erase(id_bolsillo)]")	
+				db.query("DELETE FROM INVENTARIO WHERE ID_Bolsillo=%d"%[bolsillo.id_bolsillo,bolsillos.erase(bolsillo.id_bolsillo)])	
 				
 			return
 

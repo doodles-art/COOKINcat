@@ -22,7 +22,7 @@ func cargar_DatosItems():
 	#Quiero leer la informacion de la tabla ITEMS y CULTIVOS (que son como unos "diccionarios" de la info de cada objeto del juego)
 	database.query("SELECT * FROM ITEMS AS i JOIN CULTIVOS AS c ON i.ID_CULTIVO = c.ID")
 
-	#Creo un resource de Godot con los datos de cada fila de la base de datos entre la tabla ITEMS y CULTIVOS
+	#Creo un resource de Godot con los datos de cada fila de la base de datos entre la tabla ITEMS y CULTIVOS 
 	for row in database.query_result:
 		var item_dato:=Item.new()
 		item_dato.id=row["ID_Item"]

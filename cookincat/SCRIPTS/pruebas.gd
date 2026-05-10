@@ -5,6 +5,7 @@ extends Node
 func _ready() -> void:
 	Inventario._sumarItem(1,3)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
