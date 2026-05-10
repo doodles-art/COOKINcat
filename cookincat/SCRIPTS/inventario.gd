@@ -16,6 +16,7 @@ func _ready() -> void:
 	db.path="res://DATABASE/CookinCatDATABASE"#le paso la ruta de la Database en el proyecto de Godot
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()
+	
 #cargo el inventario guardado del jugador nada mas comenzar el juego
 
 
@@ -29,11 +30,11 @@ func _cargar_inventario():
 		var bolsillo:=Bolsillo.new() #creo un "objeto" de tipo Bolsillo
 		#son como una referencia al item real en el "diccionario" de items
 		bolsillo.id_bolsillo=row["ID_Bolsillo"]
+		print(bolsillo.id_bolsillo)
 		bolsillo.item = Database.Diccionario_Item[row["ID_Item"]] #item incluye icono,tipo,precio 
 		bolsillo.cantidad=row["Cantidad"]
 		
-		#enlazamos el resource item real
-		bolsillo.item=Database.Diccionario_Item[bolsillo.id_bolsillo]
+		
 		bolsillos[bolsillo.id_bolsillo]=bolsillo #lo añado con esta info al inventario (De sql a godot)
 		emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
 		
@@ -48,7 +49,7 @@ func _sumarItem(id_objeto:int, cantidad:int):
 
 		#busco si ya hay un objeto del mismo tipo ya en el inventario
 		for bolsillo in bolsillos.values():
-			
+			print("Bolsillo:", bolsillo.id_bolsillo, " Item:", bolsillo.item.id, " Busco:", id_objeto)
 			if(bolsillo.item.id==id_objeto): #lo encuentra
 				bolsillo.cantidad+=cantidad
 				db.query( "UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
@@ -68,7 +69,9 @@ func _restarItem(id_objeto:int, cantidad:int) -> void:
 	
 	for bolsillo in bolsillos.values():
 		# Comparación correcta: ID del item
-		if bolsillo.item.id == id_objeto:
+		print("Bolsillo:", bolsillo.id_bolsillo, " Item:", bolsillo.item.id, " Busco:", id_objeto)
+
+		if (bolsillo.item.id == id_objeto):
 			
 			while bolsillo.cantidad > 0 and cantidad > 0:
 				bolsillo.cantidad -= 1
@@ -77,20 +80,30 @@ func _restarItem(id_objeto:int, cantidad:int) -> void:
 				  
 			# Si queda vacío, borrar de SQL y del diccionario
 			if bolsillo.cantidad <= 0:
-				db.query("DELETE FROM INVENTARIO WHERE ID_Bolsillo=%d" % [bolsillo.id_bolsillo,])
+				
+				db.query("DELETE FROM INVENTARIO WHERE ID_Bolsillo=%d" % [bolsillo.id_bolsillo])
 				bolsillos.erase(bolsillo.id_bolsillo)#lo quito de la lista de godot
+				break
 				
 			emit_signal("inventario_actualizado")
+			print(bolsillos.values())
 			return
 
 
 #funcion que uso para insertar un nuevo bolsillo al inventario (lo uso para cuando no haya ningun bolsillo en la tabla o para cuando no haya ningun item de ese tipo todavia en el inventario)
 func _insertarBolsillo(id_objeto:int,cantidad:int)->void:
 	var nuevo_bolsillo:=Bolsillo.new()
-	nuevo_bolsillo.id_bolsillo=bolsillos.size()+1 #aumento el tamaño de la lista
+	
+	# Insertamos sin ID_Bolsillo (lo genera SQLite)
+	db.query("INSERT INTO INVENTARIO (ID_Item, Cantidad) VALUES (%d, %d)" % [id_objeto, cantidad])
+	
+	 # Recuperamos el ID generado por SQLite
+	nuevo_bolsillo.id_bolsillo = db.last_insert_rowid
+	
+	 # Cargamos el item real
 	nuevo_bolsillo.item = Database.Diccionario_Item[id_objeto]
-	nuevo_bolsillo.cantidad=cantidad
-		
+	nuevo_bolsillo.cantidad = cantidad
+	
 	bolsillos[nuevo_bolsillo.id_bolsillo]=nuevo_bolsillo #añado este bolsillo con esta info al inventario
 	db.query("INSERT INTO INVENTARIO (ID_Bolsillo, ID_Item, Cantidad) VALUES (%d, %d, %d)" % [nuevo_bolsillo.id_bolsillo,id_objeto,cantidad])
-	
+	#en sql aunque borres filas y añadas nunca se reutiliza un id anque ya no exista su fila
