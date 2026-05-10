@@ -2,7 +2,7 @@ extends Control
 
 
 
-@onready var backgroundSprite: Sprite2D=$PanelContainer/Background
+@onready var backgroundSprite: Sprite2D=$CenterContainer/Background
 @onready var itemSprite :TextureRect=$CenterContainer/IconoItem
 @onready var itemCantidad:Label=$Label_Cantidad #texto con la cantidad de ese item
 

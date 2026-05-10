@@ -30,7 +30,6 @@ func _cargar_inventario():
 		var bolsillo:=Bolsillo.new() #creo un "objeto" de tipo Bolsillo
 		#son como una referencia al item real en el "diccionario" de items
 		bolsillo.id_bolsillo=row["ID_Bolsillo"]
-		print(bolsillo.id_bolsillo)
 		bolsillo.item = Database.Diccionario_Item[row["ID_Item"]] #item incluye icono,tipo,precio 
 		bolsillo.cantidad=row["Cantidad"]
 		

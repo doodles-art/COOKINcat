@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxhrbgsukpeuq"
-path="res://.godot/imported/Radish_cultivo.jpg-a63a595ccd07ad85f90e57717d5fbf53.ctex"
+uid="uid://31ic8n6dsnn5"
+path="res://.godot/imported/Radish_cultivo.png-17ccf449eacdb6a04b22f25617e8fdba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Radish_cultivo.jpg"
-dest_files=["res://.godot/imported/Radish_cultivo.jpg-a63a595ccd07ad85f90e57717d5fbf53.ctex"]
+source_file="res://Sprites/Items/Radish_cultivo.png"
+dest_files=["res://.godot/imported/Radish_cultivo.png-17ccf449eacdb6a04b22f25617e8fdba.ctex"]
 
 [params]
 

@@ -7,8 +7,8 @@
 [node name="bolsillo" type="Panel" unique_id=2035143134]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(70, 70)
-offset_right = 91.0
-offset_bottom = 91.0
+offset_right = 95.0
+offset_bottom = 95.0
 script = ExtResource("1_p5h00")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=995942941]
@@ -21,7 +21,7 @@ grow_vertical = 2
 
 [node name="Background" type="Sprite2D" parent="CenterContainer" unique_id=309860961]
 modulate = Color(0.7204674, 0.72046757, 0.7204672, 1)
-scale = Vector2(91, 91)
+scale = Vector2(94.99999, 94.99999)
 texture = SubResource("CanvasTexture_hhcjw")
 centered = false
 
