@@ -11,11 +11,32 @@ offset_right = 91.0
 offset_bottom = 91.0
 script = ExtResource("1_p5h00")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=309860961]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=995942941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="CenterContainer" unique_id=309860961]
 modulate = Color(0.7204674, 0.72046757, 0.7204672, 1)
 scale = Vector2(91, 91)
 texture = SubResource("CanvasTexture_hhcjw")
 centered = false
 
-[node name="Item" type="Sprite2D" parent="." unique_id=2132387163]
-scale = Vector2(91, 91)
+[node name="IconoItem" type="TextureRect" parent="CenterContainer" unique_id=445677329]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label_Cantidad" type="Label" parent="." unique_id=530091400]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 91.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
