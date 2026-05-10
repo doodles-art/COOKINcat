@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b16kcwhcqvfor"]
+
+[ext_resource type="Script" uid="uid://svvixxvrvoyn" path="res://SCRIPTS/pick_escenas_Orchard.gd" id="1_ppn2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spsdm"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_bottom = 9
+border_color = Color(0.6196773, 0.7148389, 0.69641423, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71tu7"]
+bg_color = Color(0.2636022, 0.27809164, 0.2523182, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+corner_detail = 14
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+
+[node name="PickEscenas_Shop" type="Control" unique_id=110809235]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ppn2o")
+
+[node name="PickGarden" type="Button" parent="." unique_id=513390803]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 535.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.29808384, 0.3080102, 0.26740426, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_spsdm")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_71tu7")
+text = "`´"
+
+[connection signal="pressed" from="PickGarden" to="." method="on_Orchard_pressed"]
