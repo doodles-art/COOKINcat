@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4f255pftk2mj"]
+[gd_scene format=3 uid="uid://bt3mssdg2u5m4"]
 
 [ext_resource type="Texture2D" uid="uid://c3y01vrx03xby" path="res://Sprites/cookinCat_MainMenu.jpg" id="1_bdbev"]
 [ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_dailb"]

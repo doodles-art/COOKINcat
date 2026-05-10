@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bff2lcvkevqig"]
+
+[ext_resource type="Script" uid="uid://bo2dn6n5u0pnt" path="res://UI/bolsillo_ui.gd" id="1_p5h00"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hhcjw"]
+
+[node name="bolsillo" type="Panel" unique_id=2035143134]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(70, 70)
+offset_right = 91.0
+offset_bottom = 91.0
+script = ExtResource("1_p5h00")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=309860961]
+modulate = Color(0.7204674, 0.72046757, 0.7204672, 1)
+scale = Vector2(91, 91)
+texture = SubResource("CanvasTexture_hhcjw")
+centered = false
+
+[node name="Item" type="Sprite2D" parent="." unique_id=2132387163]
+scale = Vector2(91, 91)

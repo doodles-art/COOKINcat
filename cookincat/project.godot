@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="COOKINCAT"
-run/main_scene="uid://c4f255pftk2mj"
+run/main_scene="uid://bt3mssdg2u5m4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
+
+[autoload]
+
+Database="*uid://drv1cmxeyffsx"
+Inventario="*uid://cnt0ejopuk18p"
+Pruebas="*uid://bpe0y6d5uqe63"
 
 [display]
 
@@ -35,7 +41,10 @@ folder_colors={
 "res://ADDONS/": "gray",
 "res://DATABASE/": "blue",
 "res://ESCENAS/": "purple",
-"res://Sprites/": "green"
+"res://Item/": "red",
+"res://SCRIPTS/": "teal",
+"res://Sprites/": "green",
+"res://UI/": "orange"
 }
 
 [input]
