@@ -9,7 +9,8 @@ func _ready() -> void:
 	
 	database=SQLite.new() #Creamos la base de datos en esta variable
 	
-	database.path="user://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot
+	print("DB open DATABASE")
+	database.path="res://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot
 	database.open_db() #Para asi abrirla y poder conocer su contenido
 
 	cargar_DatosItems()#Carga el diccionario con los datos de cada item cada vez quje incie el juego

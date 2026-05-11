@@ -16,7 +16,10 @@ func _ready():
 	print("Bolsillos en SQL al iniciar UI: ", Inventario.bolsillos.size())
 
 	_cargarInventarioUI()
-	Inventario.connect("inventario_actualizado",Callable(self,"updateUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario)
+	#se suma un nuevo item (añadimos un bolsillo)
+	Inventario.connect("inventario_actualizado_suma",Callable(self,"_sumarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario)
+	#se resta un nuevo item (restamos un bolsillo
+	Inventario.connect("inventario_actualizado_suma",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
 	#update()#si no la llamo aqui no veria la ui a no ser que añadiera un item
 	
 
@@ -31,7 +34,7 @@ func close():
 	isOpen=false
 	closed.emit() #mando la señal de que el inventario esta abierto
 	
-func _updateUI():
+"""func _updateUI():
 	bolsillos_ui = $CanvasLayer/Panel/GridContainer.get_children() #para asegurarnos de que se impriman correctamente y no se dupliquen
 	var values=Inventario.bolsillos.values()
 	
@@ -43,6 +46,7 @@ func _updateUI():
 			bolsillo_ui._set_bolsillo(bolsillos_ui[i])
 		else: #llega al max
 			bolsillo_ui._set_bolsillo(null)
+"""
 
 func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGARLO EN LA UI
 	bolsillos_ui.clear() #Lo limpio para que no queden rastros del inicio anterior del juego
@@ -57,4 +61,14 @@ func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGAR
 		bolsillo_ui._set_bolsillo(bolsillo)#funcion de bolsilloUi que lee el bolsillo que le paso y coge su textura y cantidad
 		print(bolsillo.id_bolsillo)
 		
-		
+
+func _sumarBolsilloUI():
+	
+	$CanvasLayer/Panel/GridContainer.add_child(bolsillo_ui)
+	var bolsillo_ui = SCENE_BOLSILLOUI.instantiate() #creo un NUEVO bolsillo en escena
+	$CanvasLayer/Panel/GridContainer.add_child(bolsillo_ui)
+
+	bolsillo_ui._set_bolsillo(bolsillo)
+	
+
+func _restarBolsilloUI():

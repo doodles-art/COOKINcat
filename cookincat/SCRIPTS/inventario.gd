@@ -2,8 +2,10 @@ extends Control
 
 class_name Inventory
 
-signal inventario_actualizado
-
+#signal inventario_actualizado
+signal inventario_actualizado_suma (bolsillo) #le paso junto con la señal el bolsillo que sumo
+signal inventario_actualizado_resta (bolsillo)
+#signal accesoSQL
 
 var db:SQLite
 
@@ -14,7 +16,8 @@ func _ready() -> void:
 	
 	db=SQLite.new() #Creamos la base de datos en esta variable
 	
-	db.path="user://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
+	print("Db open INVENTARIO")
+	db.path="res://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()
 	
@@ -25,6 +28,7 @@ func _cargar_inventario():
 	bolsillos.clear() #para no repetir filas las elimino y me aseguro de que no pase esto 
 	#SOLO QUIERO DE CULTIVOS E ITEMS LOS DATOS QUE ME INTERESEN PARA LOS OBJETOS ACTUALES DEL INVENTARIO
 	db.query("Select * FROM INVENTARIO AS INV LEFT JOIN ITEMS AS ITM ON INV.ID_Item=ITM.ID_Item LEFT JOIN CULTIVOS AS CLT ON ITM.ID_Cultivo=CLT.ID")
+	#emit_signal("accesoSQL")
 	#PASO LA INFORMACION DE CADA FILA DE LA TABLA EN SQLLITE A EL ARRAY/DICCIONARIO EN GODOT (PARA ACCEDER A EL SIN NECESIDAD DE HACER QUERY toDO EL RATO)
 	
 	for row in db.query_result:
@@ -60,7 +64,7 @@ func _sumarItem(id_objeto:int, cantidad:int):
 
 	print("añadio")
 	print(id_objeto,cantidad)#compuebo
-	emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
+	emit_signal("inventario_actualizado_suma",bolsillo)#envio unaq señal de que he actualizado el inventario
 	
 
 func _restarItem(id_objeto:int, cantidad:int) -> void:
@@ -85,7 +89,7 @@ func _restarItem(id_objeto:int, cantidad:int) -> void:
 				bolsillos.erase(bolsillo.id_bolsillo)#lo quito de la lista de godot
 				break
 				
-			emit_signal("inventario_actualizado")
+			emit_signal("inventario_actualizado_resta")
 			print(bolsillos.values())
 			return
 
