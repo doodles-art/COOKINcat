@@ -35,7 +35,7 @@ func _cargar_inventario():
 		
 		
 		bolsillos[bolsillo.id_bolsillo]=bolsillo #lo añado con esta info al inventario (De sql a godot)
-		emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
+		#emit_signal("inventario_actualizado")#envio unaq señal de que he actualizado el inventario
 		
 		
 	
