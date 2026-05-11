@@ -11,9 +11,10 @@ var db:SQLite
 var bolsillos: Dictionary={} #como un array pero la busqueda de cada Item se hace de manera mas rapida y simple
 
 func _ready() -> void:
+	
 	db=SQLite.new() #Creamos la base de datos en esta variable
 	
-	db.path="res://DATABASE/CookinCatDATABASE"#le paso la ruta de la Database en el proyecto de Godot
+	db.path="user://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()
 	
@@ -104,5 +105,4 @@ func _insertarBolsillo(id_objeto:int,cantidad:int)->void:
 	nuevo_bolsillo.cantidad = cantidad
 	
 	bolsillos[nuevo_bolsillo.id_bolsillo]=nuevo_bolsillo #añado este bolsillo con esta info al inventario
-	db.query("INSERT INTO INVENTARIO (ID_Bolsillo, ID_Item, Cantidad) VALUES (%d, %d, %d)" % [nuevo_bolsillo.id_bolsillo,id_objeto,cantidad])
 	#en sql aunque borres filas y añadas nunca se reutiliza un id anque ya no exista su fila
