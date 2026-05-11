@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://q5d6yh0pn8p8" path="res://Sprites/cookinCat_Orchard_fondo.png" id="2_jahj3"]
 [ext_resource type="PackedScene" uid="uid://b1alh3pw836aj" path="res://UI/MenuPausa.tscn" id="2_oimwp"]
 [ext_resource type="PackedScene" uid="uid://ct7i4v3jw6f7s" path="res://ESCENAS/Pick_Scene_Orchard.tscn" id="3_cnjq8"]
+[ext_resource type="Texture2D" uid="uid://bxhrbgsukpeuq" path="res://Sprites/Items/Radish_cultivo.jpg" id="3_i1ypn"]
+[ext_resource type="Texture2D" uid="uid://bkurh3awxdmt7" path="res://Sprites/cookinCat_OrchardBarro.png" id="3_soddb"]
+[ext_resource type="Texture2D" uid="uid://dow3hpk2mo8ls" path="res://Sprites/cookinCat_OrchardBarroTop.png" id="4_6y05j"]
+[ext_resource type="Texture2D" uid="uid://c4sn3bp84lwgu" path="res://Sprites/cookinCat_OrchardBarroTopTop.png" id="5_6y05j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bbnb"]
 texture = ExtResource("2_jahj3")
@@ -18,6 +22,28 @@ layer = 0
 offset_right = 1153.0
 offset_bottom = 650.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1bbnb")
+
+[node name="RadishCultivo" type="Sprite2D" parent="CanvasLayer" unique_id=1524100220]
+position = Vector2(297, 328)
+scale = Vector2(0.26760563, 0.26760563)
+texture = ExtResource("3_i1ypn")
+
+[node name="CookinCatOrchardBarroTop" type="Sprite2D" parent="CanvasLayer" unique_id=937899094]
+position = Vector2(578, 321)
+texture = ExtResource("4_6y05j")
+
+[node name="RadishCultivo2" type="Sprite2D" parent="CanvasLayer" unique_id=646937124]
+position = Vector2(474, 463.00003)
+scale = Vector2(-0.25029677, 0.18596596)
+texture = ExtResource("3_i1ypn")
+
+[node name="CookinCatOrchardBarro" type="Sprite2D" parent="CanvasLayer" unique_id=527390670]
+position = Vector2(577, 321)
+texture = ExtResource("3_soddb")
+
+[node name="CookinCatOrchardBarroTopTop" type="Sprite2D" parent="CanvasLayer" unique_id=1301931999]
+position = Vector2(578, 321)
+texture = ExtResource("5_6y05j")
 
 [node name="PickEscenas_Orchard" parent="CanvasLayer" unique_id=110809235 instance=ExtResource("3_cnjq8")]
 anchors_preset = -1
