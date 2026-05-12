@@ -4,11 +4,12 @@ class_name Bolsillo_UI
 
 
 @onready var itemSprite :TextureRect=$CenterContainer/IconoItem
-@onready var itemCantidad:Label=$Label_Cantidad #texto con la cantidad de ese item
+@onready var itemCantidad:Label=$Label_Cantidad#texto con la cantidad de ese item
 
 #variables para el sistema de DRAG&DROP
 var draggable=false #¿se puede arrastrar?
 var is_inside_dropable=false #¿esta dentro de un objeto en ek que se puede dropear?
+var is_dragging=false
 var boddy_ref
 
 #Funcion a la que le pasamos un Item
@@ -28,7 +29,7 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
-	
+	is_dragging=true 
 	#si no esta sobre ninguna textura(celda)
 	if itemSprite== null:
 		return
