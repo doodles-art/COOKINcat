@@ -21,7 +21,7 @@ func _ready():
 	#se resta un nuevo item (restamos un bolsillo
 	Inventario.connect("inventario_actualizado_suma",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
 	#update()#si no la llamo aqui no veria la ui a no ser que añadiera un item
-	
+	print("bolsillos_ui",bolsillos_ui.size())
 
 func open():
 	visible=true
@@ -62,13 +62,15 @@ func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGAR
 		print(bolsillo.id_bolsillo)
 		
 
-func _sumarBolsilloUI():
+func _sumarBolsilloUI(bolsillo:Bolsillo): #bolsillo seria el objeto que se le pasa con la emision de la señal
+	var bolsillo_nuevo_ui=SCENE_BOLSILLOUI.instantiate()
+	$CanvasLayer/Panel/GridContainer.add_child(bolsillo_nuevo_ui) #EL BOLSILLO QUE LE PASA LA SEÑAL
 	
-	$CanvasLayer/Panel/GridContainer.add_child(bolsillo_ui)
-	var bolsillo_ui = SCENE_BOLSILLOUI.instantiate() #creo un NUEVO bolsillo en escena
-	$CanvasLayer/Panel/GridContainer.add_child(bolsillo_ui)
+	bolsillo_nuevo_ui._set_bolsillo(bolsillo)
 
-	bolsillo_ui._set_bolsillo(bolsillo)
+func _restarBolsilloUI(bolsillo:Bolsillo):
+	var bolsillo_restado_ui=SCENE_BOLSILLOUI.instantiate()
+	$CanvasLayer/Panel/GridContainer.remove_child(bolsillo_restado_ui) #EL BOLSILLO QUE LE PASA LA SEÑAL
+	bolsillos_ui.remove_at(Inventario.bolsillos.bolsillo)
 	
-
-func _restarBolsilloUI():
+	

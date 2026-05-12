@@ -5,6 +5,7 @@ class_name Inventory
 #signal inventario_actualizado
 signal inventario_actualizado_suma (bolsillo) #le paso junto con la señal el bolsillo que sumo
 signal inventario_actualizado_resta (bolsillo)
+signal cantidad_actualizada
 #signal accesoSQL
 
 var db:SQLite
@@ -64,7 +65,7 @@ func _sumarItem(id_objeto:int, cantidad:int):
 
 	print("añadio")
 	print(id_objeto,cantidad)#compuebo
-	emit_signal("inventario_actualizado_suma",bolsillo)#envio unaq señal de que he actualizado el inventario
+	#emit_signal("inventario_actualizado_suma",bolsillo)#envio unaq señal de que he actualizado el inventario
 	
 
 func _restarItem(id_objeto:int, cantidad:int) -> void:
@@ -80,7 +81,7 @@ func _restarItem(id_objeto:int, cantidad:int) -> void:
 			while bolsillo.cantidad > 0 and cantidad > 0:
 				bolsillo.cantidad -= 1
 				cantidad -= 1
-				db.query( "UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
+				db.query("UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
 				  
 			# Si queda vacío, borrar de SQL y del diccionario
 			if bolsillo.cantidad <= 0:
@@ -109,4 +110,5 @@ func _insertarBolsillo(id_objeto:int,cantidad:int)->void:
 	nuevo_bolsillo.cantidad = cantidad
 	
 	bolsillos[nuevo_bolsillo.id_bolsillo]=nuevo_bolsillo #añado este bolsillo con esta info al inventario
+	emit_signal("inventario_actualizado_suma",nuevo_bolsillo)#envio unaq señal de que he actualizado el inventario + el bolsillo nuevo
 	#en sql aunque borres filas y añadas nunca se reutiliza un id anque ya no exista su fila
