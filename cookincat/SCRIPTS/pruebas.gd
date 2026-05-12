@@ -3,8 +3,9 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Inventario._restarItem(1,30)
-	Inventario._sumarItem(7,2)
+	if Inventario: #si inventario existe (si no  hago esto da errores al escribir lo de abajo en el output)
+		pass
+		
 	
 
 

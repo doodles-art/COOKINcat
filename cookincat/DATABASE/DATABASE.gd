@@ -9,7 +9,8 @@ func _ready() -> void:
 	
 	database=SQLite.new() #Creamos la base de datos en esta variable
 	
-	database.path="res://DATABASE/CookinCatDATABASE"#le paso la ruta de la Database en el proyecto de Godot
+	print("DB open DATABASE")
+	database.path="res://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot
 	database.open_db() #Para asi abrirla y poder conocer su contenido
 
 	cargar_DatosItems()#Carga el diccionario con los datos de cada item cada vez quje incie el juego
@@ -49,12 +50,12 @@ func cargar_TexturaItems():
 			var path:=""
 			
 			if Diccionario_Item[i].tipo=="Semilla": #el objeto es de tipo Semilla
-				path="res://Sprites/Items/%s_semilla.jpg"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
+				path="res://Sprites/Items/%s_semilla.png"%Diccionario_Item[i].nombre #sustituimos en la ruta el nombre por el nombre del item
 				#(para no tener que pasarle la ruta de la textura uno por uno (tardas demasiado :( )
 			
 			
 			if Diccionario_Item[i].tipo=="Cultivo": #El objeto es de tipo Cultivo
-				path="res://Sprites/Items/%s_cultivo.jpg"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
+				path="res://Sprites/Items/%s_cultivo.png"%Diccionario_Item[i].nombre#sustituimos en la ruta el nombre por el nombre del item
 				
 				
 			#guardamos en el resource (en godot)
