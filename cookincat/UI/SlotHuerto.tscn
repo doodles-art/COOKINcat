@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cet1oqyhwhmiu"]
+
+[ext_resource type="Script" uid="uid://d3glde6uspfg7" path="res://UI/slot_huerto_Ui.gd" id="1_0ljki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqafs"]
+radius = 123.146255
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik5d1"]
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[node name="SlotHuerto" type="Area2D" unique_id=330279681]
+script = ExtResource("1_0ljki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252184079]
+position = Vector2(123, 124)
+shape = SubResource("CircleShape2D_pqafs")
+
+[node name="Panel" type="Panel" parent="." unique_id=430150328]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_right = 247.0
+offset_bottom = 251.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ik5d1")
