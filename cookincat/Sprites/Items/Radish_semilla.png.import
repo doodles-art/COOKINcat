@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rghdb0emw3sr"
-path="res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"
+uid="uid://c5w1ych5icuya"
+path="res://.godot/imported/Radish_semilla.png-47ad67fa6839b96825146fd6a00d496b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Lettuce_cultivo.png"
-dest_files=["res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"]
+source_file="res://Sprites/Items/Radish_semilla.png"
+dest_files=["res://.godot/imported/Radish_semilla.png-47ad67fa6839b96825146fd6a00d496b.ctex"]
 
 [params]
 

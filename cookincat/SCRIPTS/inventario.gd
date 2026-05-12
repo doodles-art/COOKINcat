@@ -49,23 +49,24 @@ func _sumarItem(id_objeto:int, cantidad:int):
 	
 	if bolsillos.is_empty()==true: #si no hay ningun elemento en el diccionario (inventqrio vacio)
 		_insertarBolsillo(id_objeto,cantidad) #creo un nuevo bolsillo con este
-	
+		return
+		
 	if bolsillos.is_empty()==false: #hay al menos un elemento en el diccionario (ahora tengo que ver si el tipo de elemento que quiero insertar se encuentra ya en el inventario)
 
 		#busco si ya hay un objeto del mismo tipo ya en el inventario
 		for bolsillo in bolsillos.values():
 			print("Bolsillo:", bolsillo.id_bolsillo, " Item:", bolsillo.item.id, " Busco:", id_objeto)
+			
+			#hace un bucle llendo bolsillo por bolsillo hasta encontrar concicdenciasd
 			if(bolsillo.item.id==id_objeto): #lo encuentra
 				bolsillo.cantidad+=cantidad
-				db.query( "UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
-				return #sale de la funcion y acaba
+				db.query("UPDATE INVENTARIO SET Cantidad=%d WHERE ID_Bolsillo=%d" % [bolsillo.cantidad,bolsillo.id_bolsillo])
+				return #si lo encuentra sale de la funcion y acaba
 			
-			else:#no lo encuentra (entonces tenemos que crear otro bolsillo con este "nuevo" tipo de dato
-				_insertarBolsillo(id_objeto,cantidad)
-
-	print("añadio")
-	print(id_objeto,cantidad)#compuebo
-	#emit_signal("inventario_actualizado_suma",bolsillo)#envio unaq señal de que he actualizado el inventario
+			 #si no lo encuentra continua despues del bucle
+		
+		_insertarBolsillo(id_objeto,cantidad)
+		return
 	
 
 func _restarItem(id_objeto:int, cantidad:int) -> void:

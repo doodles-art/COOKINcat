@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rghdb0emw3sr"
-path="res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"
+uid="uid://dr36xe4prv18a"
+path="res://.godot/imported/Carrot_semilla.png-b8d0a9b431a441d1a4ceddc10d93e292.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Lettuce_cultivo.png"
-dest_files=["res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"]
+source_file="res://Sprites/Items/Carrot_semilla.png"
+dest_files=["res://.godot/imported/Carrot_semilla.png-b8d0a9b431a441d1a4ceddc10d93e292.ctex"]
 
 [params]
 

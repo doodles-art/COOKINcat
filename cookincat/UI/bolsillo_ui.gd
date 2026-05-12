@@ -34,7 +34,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	#para centrar la preview
 	var c=Control.new()
 	c.add_child(preview)
-	#cetnro la preview en el raton que si no da toc
+	#cetnro la preview en el raton que me da toc
 	preview.position-=Vector2(40,25)
 	preview.size-=Vector2(20,20)
 	

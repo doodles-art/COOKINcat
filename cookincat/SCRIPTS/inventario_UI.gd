@@ -19,7 +19,7 @@ func _ready():
 	#se suma un nuevo item (añadimos un bolsillo)
 	Inventario.connect("inventario_actualizado_suma",Callable(self,"_sumarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario)
 	#se resta un nuevo item (restamos un bolsillo
-	Inventario.connect("inventario_actualizado_suma",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
+	Inventario.connect("inventario_actualizado_resta",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
 	#update()#si no la llamo aqui no veria la ui a no ser que añadiera un item
 	print("bolsillos_ui",bolsillos_ui.size())
 
@@ -34,19 +34,6 @@ func close():
 	isOpen=false
 	closed.emit() #mando la señal de que el inventario esta abierto
 	
-"""func _updateUI():
-	bolsillos_ui = $CanvasLayer/Panel/GridContainer.get_children() #para asegurarnos de que se impriman correctamente y no se dupliquen
-	var values=Inventario.bolsillos.values()
-	
-	for i in range(bolsillos_ui.size()):
-		var bolsillo_ui=bolsillos_ui[i]
-		bolsillo_ui._set_bolsillo(bolsillos_ui[i])
-		
-		if i <bolsillos_ui.size(): #no ha llegado al maximo de la lista 
-			bolsillo_ui._set_bolsillo(bolsillos_ui[i])
-		else: #llega al max
-			bolsillo_ui._set_bolsillo(null)
-"""
 
 func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGARLO EN LA UI
 	bolsillos_ui.clear() #Lo limpio para que no queden rastros del inicio anterior del juego
