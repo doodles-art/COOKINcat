@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rghdb0emw3sr"
-path="res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"
+uid="uid://llos6r31fmm0"
+path="res://.godot/imported/Potato_semilla.png-6140ae2aa6af0caf9e107c0900a7d7ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Lettuce_cultivo.png"
-dest_files=["res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"]
+source_file="res://Sprites/Items/Potato_semilla.png"
+dest_files=["res://.godot/imported/Potato_semilla.png-6140ae2aa6af0caf9e107c0900a7d7ba.ctex"]
 
 [params]
 

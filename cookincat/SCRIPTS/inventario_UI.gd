@@ -6,7 +6,7 @@ signal closed
 
 const SCENE_BOLSILLOUI = preload("res://UI/bolsillo.tscn") #cargo la escena para crear hijos/crear los bolsillos desde el codigo
 
-
+var indice_actual=0
 var isOpen :bool=false
 
 @onready var bolsillos_ui:Array #esta clase contiene fondo, icono y cantidad
@@ -14,12 +14,13 @@ var isOpen :bool=false
 
 func _ready():
 	print("Bolsillos en SQL al iniciar UI: ", Inventario.bolsillos.size())
-
-	_cargarInventarioUI()
+	
+	_cargarInventarioUI() #cargo los primeros 5 slots por defecto al iniciar el juego
+	
 	#se suma un nuevo item (añadimos un bolsillo)
 	Inventario.connect("inventario_actualizado_suma",Callable(self,"_sumarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario)
 	#se resta un nuevo item (restamos un bolsillo
-	Inventario.connect("inventario_actualizado_suma",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
+	Inventario.connect("inventario_actualizado_resta",Callable(self,"_restarBolsilloUI")) #llamo a la funcion de update si recibo la señal (ha habido un cambio en el codigo de inventario
 	#update()#si no la llamo aqui no veria la ui a no ser que añadiera un item
 	print("bolsillos_ui",bolsillos_ui.size())
 
@@ -34,24 +35,10 @@ func close():
 	isOpen=false
 	closed.emit() #mando la señal de que el inventario esta abierto
 	
-"""func _updateUI():
-	bolsillos_ui = $CanvasLayer/Panel/GridContainer.get_children() #para asegurarnos de que se impriman correctamente y no se dupliquen
-	var values=Inventario.bolsillos.values()
-	
-	for i in range(bolsillos_ui.size()):
-		var bolsillo_ui=bolsillos_ui[i]
-		bolsillo_ui._set_bolsillo(bolsillos_ui[i])
-		
-		if i <bolsillos_ui.size(): #no ha llegado al maximo de la lista 
-			bolsillo_ui._set_bolsillo(bolsillos_ui[i])
-		else: #llega al max
-			bolsillo_ui._set_bolsillo(null)
-"""
 
 func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGARLO EN LA UI
 	bolsillos_ui.clear() #Lo limpio para que no queden rastros del inicio anterior del juego
-	print("Cargo inventario UI")
-	
+
 	#si no hay ningun item en la lista de bolsillos no carga nada
 	for bolsillo in Inventario.bolsillos.values(): #lista de bolsillos del inventario(junto con la info de los items que contiene cada bolsillo)
 		print("entro en el bucle")
@@ -74,3 +61,7 @@ func _restarBolsilloUI(bolsillo:Bolsillo):
 	bolsillos_ui.remove_at(Inventario.bolsillos.bolsillo)
 	
 	
+#func on_Izquierda_pressed():
+	#_cargarInventarioUI()
+#func on_Derecha_pressed():
+	#_cargarInventarioUI()

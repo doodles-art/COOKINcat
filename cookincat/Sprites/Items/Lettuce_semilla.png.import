@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rghdb0emw3sr"
-path="res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"
+uid="uid://db8b7vxlt6my0"
+path="res://.godot/imported/Lettuce_semilla.png-c4f1b39d8ebe59e23b5bcb75aeaaeb46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Lettuce_cultivo.png"
-dest_files=["res://.godot/imported/Lettuce_cultivo.png-be86beede1fcb4f7cf4c90f135060c29.ctex"]
+source_file="res://Sprites/Items/Lettuce_semilla.png"
+dest_files=["res://.godot/imported/Lettuce_semilla.png-c4f1b39d8ebe59e23b5bcb75aeaaeb46.ctex"]
 
 [params]
 

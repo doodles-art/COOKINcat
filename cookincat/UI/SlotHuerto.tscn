@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cet1oqyhwhmiu"]
+
+[ext_resource type="Script" uid="uid://d3glde6uspfg7" path="res://UI/slot_huerto_Ui.gd" id="1_0ljki"]
+[ext_resource type="Script" uid="uid://dk7m85vsgwkql" path="res://SCRIPTS/SlotHuerto.gd" id="2_pqafs"]
+
+[sub_resource type="Resource" id="Resource_ik5d1"]
+script = ExtResource("2_pqafs")
+metadata/_custom_type_script = "uid://dk7m85vsgwkql"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqafs"]
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqafs"]
+radius = 123.146255
+
+[node name="SlotHuerto" type="StaticBody2D" unique_id=880191865]
+script = ExtResource("1_0ljki")
+slot_huerto = SubResource("Resource_ik5d1")
+
+[node name="Panel" type="Panel" parent="." unique_id=1973759159]
+offset_right = 247.0
+offset_bottom = 249.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pqafs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252184079]
+position = Vector2(123, 124)
+shape = SubResource("CircleShape2D_pqafs")

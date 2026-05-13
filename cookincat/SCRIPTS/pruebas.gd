@@ -5,7 +5,6 @@ extends Node
 func _ready() -> void:
 	if Inventario: #si inventario existe (si no  hago esto da errores al escribir lo de abajo en el output)
 		pass
-		
 	
 
 
