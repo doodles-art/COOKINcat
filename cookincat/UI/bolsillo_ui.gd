@@ -33,6 +33,8 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 		itemSprite.texture=load(bolsillo.item.icon_texture_path)
 		itemCantidad.text=str(bolsillo.cantidad)
 
+
+"""
 func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		print("CLICK DETECTADO EN BOLSILLO")
@@ -77,3 +79,4 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 #Si pasa el can_drop data ocurre este (decidimos que hacer con lo que se esta arrastrando)
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	pass
+"""

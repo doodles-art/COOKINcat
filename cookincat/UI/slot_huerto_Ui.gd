@@ -29,6 +29,7 @@ func _on_mouse_exit(): #el raton sale del area del slot
 
 func _can_drop_data(at_position:Vector2, data:Variant ) ->bool:
 	if not is_hovered or not data.has("item"):
+		print("np")
 		return false
 		
 	var item=data["item"]
@@ -60,7 +61,7 @@ func _drop_data(at_position:Vector2, data: Variant)->void:
 #___________________________
 func _actualizar_visual():
 	if slot_huerto.item==null: #no hay nada plantado
-		icono.visible=false
+		icono.visible=true
 		return
 		
 	#si no se cumple lo de arriba llega aquo (hay algo plantado)

@@ -17,7 +17,6 @@ func _ready() -> void:
 	
 	db=SQLite.new() #Creamos la base de datos en esta variable
 	
-	print("Db open INVENTARIO")
 	db.path="res://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
 	db.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 	_cargar_inventario()

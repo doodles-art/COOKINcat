@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cet1oqyhwhmiu"]
+[gd_scene format=3 uid="uid://vuucurp4ni6v"]
 
 [ext_resource type="Script" uid="uid://d3glde6uspfg7" path="res://UI/slot_huerto_Ui.gd" id="1_0ljki"]
 [ext_resource type="Script" uid="uid://dk7m85vsgwkql" path="res://SCRIPTS/SlotHuerto.gd" id="2_pqafs"]
@@ -8,6 +8,7 @@ script = ExtResource("2_pqafs")
 metadata/_custom_type_script = "uid://dk7m85vsgwkql"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqafs"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5137255)
 corner_radius_top_left = 120
 corner_radius_top_right = 120
 corner_radius_bottom_right = 120
