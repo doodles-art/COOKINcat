@@ -1,11 +1,10 @@
-extends Control
+extends StaticBody2D
 
 #este area sirve para guiar al jugador hacia donde tiene que plantar en el huerto
 
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
 
-@onready var area: Area2D=$Area2D
 @onready var icono:Panel=$Panel
 
 var is_hovered :=false
@@ -13,16 +12,7 @@ var is_hovered :=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	icono.visible=false
-	print("Area2D pickable:", area.input_pickable)
-	print("Collision shape:", area.get_child(0))
-	
-	#Detectamos cuando el raton sale o  entra del area del slot
-	#si entra llamamos a la funcion _on_mouse_enter (dentro de su mismo codigo ->self)
-	area.connect("mouse_entered",Callable(self,"_on_mouse_enter"))
-	
-	#si sale llamamos a ala funcion _on_mouse_exit
-	area.connect("mouse_exited",Callable(self,"_on_mouse_exit"))
-	
+
 	_actualizar_visual()
 	
 
