@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bkurh3awxdmt7" path="res://Sprites/cookinCat_OrchardBarro.png" id="3_soddb"]
 [ext_resource type="Texture2D" uid="uid://dow3hpk2mo8ls" path="res://Sprites/cookinCat_OrchardBarroTop.png" id="4_6y05j"]
 [ext_resource type="Texture2D" uid="uid://c4sn3bp84lwgu" path="res://Sprites/cookinCat_OrchardBarroTopTop.png" id="5_6y05j"]
-[ext_resource type="PackedScene" path="res://UI/SlotHuerto.tscn" id="9_001fr"]
+[ext_resource type="PackedScene" uid="uid://cet1oqyhwhmiu" path="res://UI/SlotHuerto.tscn" id="9_001fr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bbnb"]
 texture = ExtResource("2_jahj3")
@@ -80,7 +80,10 @@ offset_bottom = 634.0
 text = "BACK"
 
 [node name="SlotHuerto" parent="CanvasLayer" unique_id=330279681 instance=ExtResource("9_001fr")]
-position = Vector2(161.00002, 231.00002)
+offset_left = 161.00002
+offset_top = 231.00002
+offset_right = 161.00002
+offset_bottom = 231.00002
 scale = Vector2(0.5199994, 0.5199994)
 
 [connection signal="pressed" from="CanvasLayer/BACK" to="." method="on_BACK_pressed"]

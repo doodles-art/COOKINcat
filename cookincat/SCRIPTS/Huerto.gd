@@ -37,8 +37,8 @@ func _cargarHuerto():
 		print (slot)
 		
 		
-func _sumarSlot():
+#func _sumarSlot():
 	
 	
-func _restarSlot():
+#func _restarSlot():
 	

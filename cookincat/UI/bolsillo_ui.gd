@@ -13,6 +13,10 @@ var is_inside_dropable=false #¿esta dentro de un objeto en ek que se puede drop
 var is_dragging=false
 var boddy_ref
 
+func _ready() -> void:
+	print("NODO ACTUAL:",self)
+	print("HIJOS:",get_children())
+
 #Funcion a la que le pasamos un Item
 func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que quiero meter algo
 	self.bolsillo=bolsillo
@@ -29,6 +33,9 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 		itemSprite.texture=load(bolsillo.item.icon_texture_path)
 		itemCantidad.text=str(bolsillo.cantidad)
 
+func _gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		print("CLICK DETECTADO EN BOLSILLO")
 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
