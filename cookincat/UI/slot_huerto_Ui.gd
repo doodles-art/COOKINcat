@@ -8,9 +8,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+"""func _process(delta: float) -> void:
 	
-	if BolsilloUi.isdragging : #si estamos arrastrando un objeto del inventario hacemos visible el area
+	if BolsilloUi.isdragging ==true : #si estamos arrastrando un objeto del inventario hacemos visible el area
 		visible=true
 	else:
 		visible =false
+"""

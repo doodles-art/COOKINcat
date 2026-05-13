@@ -8,4 +8,6 @@ class_name SlotHuerto
 
 
 func _timer():
-	
+	pass
+
+func _on_Control_body

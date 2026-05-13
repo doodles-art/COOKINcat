@@ -29,7 +29,7 @@ func _cargar_inventario():
 	bolsillos.clear() #para no repetir filas las elimino y me aseguro de que no pase esto 
 	#SOLO QUIERO DE CULTIVOS E ITEMS LOS DATOS QUE ME INTERESEN PARA LOS OBJETOS ACTUALES DEL INVENTARIO
 	db.query("Select * FROM INVENTARIO AS INV LEFT JOIN ITEMS AS ITM ON INV.ID_Item=ITM.ID_Item LEFT JOIN CULTIVOS AS CLT ON ITM.ID_Cultivo=CLT.ID")
-	#emit_signal("accesoSQL")
+	
 	#PASO LA INFORMACION DE CADA FILA DE LA TABLA EN SQLLITE A EL ARRAY/DICCIONARIO EN GODOT (PARA ACCEDER A EL SIN NECESIDAD DE HACER QUERY toDO EL RATO)
 	
 	for row in db.query_result:

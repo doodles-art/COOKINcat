@@ -80,7 +80,7 @@ offset_bottom = 634.0
 text = "BACK"
 
 [node name="SlotHuerto" parent="CanvasLayer" unique_id=330279681 instance=ExtResource("9_001fr")]
-position = Vector2(166, 233.00002)
+position = Vector2(161.00002, 231.00002)
 scale = Vector2(0.5199994, 0.5199994)
 
 [connection signal="pressed" from="CanvasLayer/BACK" to="." method="on_BACK_pressed"]
