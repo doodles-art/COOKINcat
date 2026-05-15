@@ -29,17 +29,18 @@ func write_json_file(data:Dictionary,file_path:String):
 	file.close()
 
 func vender_cultivo(cultivo:Item,cantidad:int):
-	#comprobar que venda sólo lo que tiene
+	 #comprobar que venda sólo lo que tiene
 	var pv = cultivo["precio"]   #precio de venta
 	var ganancia = pv * cantidad #calcular ganancia
 	wallet["money"]+= ganancia   #añadir ganancias
-	#restar cantidad del item en inventario
+	Inventario._restarItem(cultivo["id"], cantidad)#restar cantidad del item en inventario
 	
 func comprar_semillas(cultivo:Item,cantidad:int):
 	var pv = cultivo["precio"]   #precio de venta
 	var coste = pv * cantidad #calcular coste
+	#comprobar que compre sólo con su dinero
 	wallet["money"]-= coste   #restar coste
-	#añadir cantidad del item al inventario
+	Inventario._sumarItem(cultivo["id"], cantidad) #añadir cantidad del item al inventario
 
 #Por ejemplo:
 #Primero se carga lo que haya en el archivo .json en la variable:
