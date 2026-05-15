@@ -7,22 +7,30 @@ class_name SlotHuerto_UI
 
 @onready var icono:Panel=$Panel
 
-var is_hovered :=false
+var is_dragging :=false
+var bolsillo_ui :BolsilloUi
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	icono.visible=false
-
-	_actualizar_visual()
+	BolsilloUi.connect("Dragging",Callable(self,"_drop"))#si se envia la señal de quen un bolsillo se esta arrastrando llama a la funcion _drop
 	
-
-func _on_mouse_enter(): #el raton entra en el area del slot
-	is_hovered=true
-	print("ENTRO")
 	
-func _on_mouse_exit(): #el raton sale del area del slot
-	is_hovered=false
-	print("SALIO")
+	
+func _drop(bolsillo_ui_drag:BolsilloUi):
+	is_dragging=true
+	bolsillo_ui=bolsillo_ui_drag
+	print("esta arrastrando cuidao")
+	
+func _on_static_body_2d_mouse_entered() -> void: #cuando el raton toque el slot ui
+	print("entro al static body")
+	if is_dragging==true:
+		_Plantar()
+	
+	
+	
+func _Plantar():
+	slot_huerto.item=bolsillo_ui.bolsillo.item #cojo el item que habia en el drag y lo guardo en el slot de mi huerto (sobre el que estaba el raton
+"""
 #___________________________
 ##SISTEMA DRAG AND DROP##
 #____________________________
@@ -67,3 +75,4 @@ func _actualizar_visual():
 	#si no se cumple lo de arriba llega aquo (hay algo plantado)
 	icono.visible=true
 	icono.texture=load(slot_huerto.item.icon_texture_path)
+"""

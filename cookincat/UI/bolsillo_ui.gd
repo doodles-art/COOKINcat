@@ -13,6 +13,8 @@ var is_inside_dropable=false #¿esta dentro de un objeto en ek que se puede drop
 var is_dragging=false
 var boddy_ref
 
+signal Dragging (bolsillo_ui:Bolsillo_UI) #señal que mando cuando se activa que se esta arrastrando el bolsilloui(y te pasa el bolsill_UI)
+
 func _ready() -> void:
 	print("NODO ACTUAL:",self)
 	print("HIJOS:",get_children())
@@ -34,14 +36,18 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 		itemCantidad.text=str(bolsillo.cantidad)
 
 
-"""
 func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		print("CLICK DETECTADO EN BOLSILLO")
 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
-	is_dragging=true 
+	is_dragging=true
+	 
+	emit_signal("Dragging",bolsillo) #mandamos una señal (para slot_huerto ) junto con el bolsillo que estamos arrastrando
+	
+	print ("bolsillo que arrastamos->",bolsillo.id_bolsillo)
+	
 	print("dag detectafdom")
 	#si no esta sobre ninguna textura(celda)
 	if bolsillo == null or bolsillo.item == null:
@@ -79,4 +85,3 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 #Si pasa el can_drop data ocurre este (decidimos que hacer con lo que se esta arrastrando)
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	pass
-"""
