@@ -13,6 +13,18 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bbnb"]
 texture = ExtResource("2_jahj3")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkxw8"]
+bg_color = Color(0.8448421, 0.63887477, 0.4025102, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_001fr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 10
+border_color = Color(0.61213756, 0.7611124, 0.7814166, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="PantallaCultivo" type="Node2D" unique_id=238280805]
 script = ExtResource("1_oimwp")
 
@@ -50,20 +62,6 @@ texture = ExtResource("3_soddb")
 position = Vector2(578, 321)
 texture = ExtResource("5_6y05j")
 
-[node name="PickEscenas_Orchard" parent="CanvasLayer" unique_id=110809235 instance=ExtResource("3_cnjq8")]
-anchors_preset = -1
-anchor_bottom = 0.99600005
-offset_left = 6.5
-offset_right = -2.0
-offset_bottom = 4.59198
-
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer" unique_id=89679884]
-offset_left = 538.0
-offset_top = 580.0
-offset_right = 684.0
-offset_bottom = 623.0
-text = "Pantalla cultivo"
-
 [node name="MenuPausa" parent="CanvasLayer" unique_id=1834581109 instance=ExtResource("2_oimwp")]
 visible = false
 z_index = 4
@@ -71,13 +69,6 @@ offset_left = -425.63202
 offset_top = -131.56801
 offset_right = 426.84796
 offset_bottom = 54.40796
-
-[node name="BACK" type="Button" parent="CanvasLayer" unique_id=315509002]
-offset_left = 12.0
-offset_top = 567.0
-offset_right = 143.0
-offset_bottom = 634.0
-text = "BACK"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer" unique_id=1142229328]
 offset_left = 93.0
@@ -117,4 +108,53 @@ scale = Vector2(0.5199994, 0.5199994)
 position = Vector2(743, 132)
 scale = Vector2(0.5199994, 0.5199994)
 
-[connection signal="pressed" from="CanvasLayer/BACK" to="." method="on_BACK_pressed"]
+[node name="Marco" type="CanvasLayer" parent="CanvasLayer" unique_id=790506473]
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Marco" unique_id=259883254]
+offset_right = 1153.0
+offset_bottom = 27.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gkxw8")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Marco" unique_id=873043148]
+offset_left = -9.0
+offset_top = 614.0
+offset_right = 1156.0
+offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gkxw8")
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/Marco" unique_id=43843847]
+offset_left = 45.6654
+offset_top = -0.9825292
+offset_right = 1198.6654
+offset_bottom = 35.44508
+rotation = 1.5734174
+scale = Vector2(0.5541224, 1.4110638)
+theme_override_styles/panel = SubResource("StyleBoxFlat_gkxw8")
+
+[node name="Panel4" type="Panel" parent="CanvasLayer/Marco" unique_id=637915348]
+offset_left = 1157.9894
+offset_top = 4.010456
+offset_right = 2310.9895
+offset_bottom = 41.391315
+rotation = 1.5734174
+scale = Vector2(0.5541224, 1.4110638)
+theme_override_styles/panel = SubResource("StyleBoxFlat_gkxw8")
+
+[node name="PickEscenas_Orchard" parent="CanvasLayer/Marco" unique_id=110809235 instance=ExtResource("3_cnjq8")]
+anchors_preset = -1
+anchor_bottom = 0.99600005
+offset_left = 497.0
+offset_top = 219.0
+offset_right = -418.0
+offset_bottom = -193.40802
+
+[node name="BACK" type="Button" parent="CanvasLayer/Marco" unique_id=315509002]
+offset_left = 25.0
+offset_top = 556.0
+offset_right = 156.0
+offset_bottom = 636.0
+theme_override_colors/font_color = Color(0.47058824, 0.47843137, 0.4509804, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_001fr")
+text = "BACK"
+
+[connection signal="pressed" from="CanvasLayer/Marco/BACK" to="." method="on_BACK_pressed"]

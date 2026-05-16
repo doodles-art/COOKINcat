@@ -11,16 +11,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni38o"]
-bg_color = Color(0.6117647, 0.78039217, 0.8784314, 1)
-border_width_left = 7
-border_width_top = 7
-border_width_right = 7
-border_width_bottom = 7
-border_color = Color(0.4072167, 0.38730225, 0.35062072, 1)
-corner_radius_top_left = 120
-corner_radius_bottom_left = 120
-
 [node name="Inventario" type="Control" unique_id=819066040]
 layout_mode = 3
 anchors_preset = 15
@@ -62,17 +52,3 @@ grow_vertical = 2
 theme_override_constants/h_separation = 117
 theme_override_constants/v_separation = 4
 columns = 5
-
-[node name="Izquierda" type="Button" parent="CanvasLayer" unique_id=160987038]
-offset_left = 48.0
-offset_top = 89.0
-offset_right = 105.0
-offset_bottom = 148.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ni38o")
-
-[node name="Derecha" type="Button" parent="CanvasLayer" unique_id=1597180745]
-offset_left = 1041.0
-offset_top = 93.0
-offset_right = 1098.0
-offset_bottom = 152.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ni38o")
