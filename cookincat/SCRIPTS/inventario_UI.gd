@@ -41,6 +41,7 @@ func _cargarInventarioUI():#RECORRRO TODOS LOS BOLSILLOS(INVENTARIO) PARA CARGAR
 
 	#si no hay ningun item en la lista de bolsillos no carga nada
 	for bolsillo in Inventario.bolsillos.values(): #lista de bolsillos del inventario(junto con la info de los items que contiene cada bolsillo)
+		
 		print("entro en el bucle")
 		var bolsillo_ui = SCENE_BOLSILLOUI.instantiate() #creo un NUEVO bolsillo en escena
 		$CanvasLayer/Panel/GridContainer.add_child(bolsillo_ui)
