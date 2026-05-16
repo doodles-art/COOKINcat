@@ -8,8 +8,8 @@ var datab : SQLite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	datab.path="res://DATABASE/CookinCatDATABASE.db"#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
+	datab = SQLite.new()
+	datab.path=Database.database.path#le paso la ruta de la Database en el proyecto de Godot (Ya que res:// es solo lectura en tiempo de ejecución. por lo que si intento cambiar algo en sql se bloquea)
 	datab.open_db() #Para asi abrirla y poder conocer su contenido (Por si hay algun Item)
 
 

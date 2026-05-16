@@ -1,68 +1,62 @@
-extends StaticBody2D
+extends Area2D
 
 #este area sirve para guiar al jugador hacia donde tiene que plantar en el huerto
 
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
+@onready var fondo:Panel=$Panel
+@onready var icono_cultivo:TextureRect=$CenterContainer/Icono
+@onready var contador_tiempo:Label=$Tiempo
 
-@onready var icono:Panel=$Panel
 
-var is_hovered :=false
+
+var is_dragging :=false
+var bolsillo_dragged: Bolsillo = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	icono.visible=false
+	pass
+	
+func _process(delta: float) -> void:  #se lee casda frame
+	#comprobacion para visibilizar las ayudas
+	if BolsilloUi._is_dragging==true: #si se esta arrastrandose
+		fondo.visible=true
+	
+	else:
+		fondo.visible=false
+#______________________________________
+#DETECCIÓN DEL ARRASTRE DEL BOLSILLO_UI
+#______________________________________________________________________________________________________________
+func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("FUERA")
 
-	_actualizar_visual()
-	
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print ("DENTRO")
+	if slot_huerto.item == null: #si el slot de huerto esta vacio puedo platar
+		_plantar()
+#______________________________________________________________________________________________________________
 
-func _on_mouse_enter(): #el raton entra en el area del slot
-	is_hovered=true
-	print("ENTRO")
+func _plantar():
+#para coger la infor del bolsillo que arrastro
+	var bolsillo_dragged = BolsilloUi.current_drag_bolsillo
 	
-func _on_mouse_exit(): #el raton sale del area del slot
-	is_hovered=false
-	print("SALIO")
-#___________________________
-##SISTEMA DRAG AND DROP##
-#____________________________
-
-func _can_drop_data(at_position:Vector2, data:Variant ) ->bool:
-	if not is_hovered or not data.has("item"):
-		return false
-		
-	var item=data["item"]
-	
-	#solo acepta semillas
-	return item.tipo=="semilla"
-	
-func _drop_data(at_position:Vector2, data: Variant)->void:
-	if is_hovered==false:
+	if slot_huerto.item!=null: #si en el slot hay algun item ya no plantamos nada
 		return
-		
-	var item=data["item"]
-	var bolsillo_origen =data["slot"]
 	
-	#si ya hay algo plantado no planto nada
-	if slot_huerto.item!=null:
-		return
-		
-	#PLANTAR 
-	slot_huerto.item=item
-	slot_huerto.tiempo=item.tiempo
-	#resto 1 al inventario (-1 cantidad al bolsillo=
-	Inventario.bolsillo._restarItem(bolsillo_origen.id_bolsillo,1) #le resto la cantidasd de uno y ya que maneje el inventario las catnidades si tiene que quital algun bolsillo, etc...
+	#le resto 1 al bolsillo del item que he plantado (y que el inventario y el inventario Ui se encargen del resto)
+	Inventario._restarItem(BolsilloUi.current_drag_bolsillo.item.id,1)
 	
-	_actualizar_visual()
+	#textura de plantita (esta creciendo)
+	icono_cultivo.texture=load("res://Sprites/Sprout.png")
+	
+	#slot_huerto.item =bolsillo_ui_ref.item
+	print("Item plantado: ",bolsillo_dragged.item.nombre)
 
-#______________________________
-#ACTUALIZAMOS LA UI DEL SLOT
-#___________________________
-func _actualizar_visual():
-	if slot_huerto.item==null: #no hay nada plantado
-		icono.visible=false
-		return
-		
-	#si no se cumple lo de arriba llega aquo (hay algo plantado)
-	icono.visible=true
-	icono.texture=load(slot_huerto.item.icon_texture_path)
+#maneja la actualizacion de la planta con tiempo
+"""func _proceso_planta():
+	
+	contador_tiempo.text=bolsillo_dragged.item.tiempo
+	#TIEMPO DE COSECHA
+	while contador >0: #mientraS NO SE HAYA ACABADO SU TIEMPO DE COSECHA EL CONTADOR DISMINUYE
+		contador
+"""
