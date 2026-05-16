@@ -3,32 +3,95 @@
 [ext_resource type="PackedScene" uid="uid://cqpgb6sbeyjlb" path="res://ESCENAS/MenuPausa.tscn" id="1_ity61"]
 [ext_resource type="PackedScene" uid="uid://b16kcwhcqvfor" path="res://ESCENAS/Pick_Scene_Shop.tscn" id="2_lgxyn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgxyn"]
+bg_color = Color(0.71968055, 0.5522642, 0.30898428, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td34g"]
+bg_color = Color(0.85, 0.8279, 0.816, 1)
+border_width_bottom = 17
+border_color = Color(0.5293, 0.69441, 0.79, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs0we"]
+bg_color = Color(0.52, 0.3938133, 0.22879998, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="PantallaTienda" type="Node2D" unique_id=1826137405]
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=984988321]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 249.0
-offset_top = 205.0
-offset_right = 884.0
-offset_bottom = 427.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Pantalla tienda"
+[node name="Panel3" type="Panel" parent="." unique_id=897294988]
+offset_right = 1155.0
+offset_bottom = 652.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgxyn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1659370062]
+
+[node name="Fondo_Comprar" type="Panel" parent="CanvasLayer" unique_id=1948893853]
+offset_left = 44.0
+offset_top = 43.0
+offset_right = 430.0
+offset_bottom = 615.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_td34g")
+
+[node name="Fondo_Vender" type="Panel" parent="CanvasLayer" unique_id=161539834]
+offset_left = 513.0
+offset_top = 43.0
+offset_right = 899.0
+offset_bottom = 615.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_td34g")
+
+[node name="Letrero" type="CanvasLayer" parent="CanvasLayer" unique_id=780589146]
+
+[node name="Letrero2" type="Panel" parent="CanvasLayer/Letrero" unique_id=1043387311]
+offset_left = 558.0
+offset_top = 18.0
+offset_right = 854.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hs0we")
+
+[node name="Letrero" type="Panel" parent="CanvasLayer/Letrero" unique_id=1533893206]
+offset_left = 91.0
+offset_top = 18.0
+offset_right = 387.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hs0we")
+
+[node name="Label" type="Label" parent="CanvasLayer/Letrero" unique_id=1012569404]
+offset_left = 120.0
+offset_top = 23.0
+offset_right = 228.01785
+offset_bottom = 46.0
+scale = Vector2(2.23, 2.23)
+text = "BUY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Letrero" unique_id=1793977561]
+offset_left = 586.0
+offset_top = 23.0
+offset_right = 694.0178
+offset_bottom = 46.0
+scale = Vector2(2.23, 2.23)
+text = "SELL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PickEscenas_Shop" parent="." unique_id=110809235 instance=ExtResource("2_lgxyn")]
 anchors_preset = 9
 anchor_right = 0.0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 1152.0
-offset_bottom = 647.0
+offset_left = 574.0
+offset_top = 326.0
+offset_right = 605.0
+offset_bottom = 351.0
 grow_horizontal = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="MenuPausa" parent="." unique_id=1834581109 instance=ExtResource("1_ity61")]
 visible = false
