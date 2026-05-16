@@ -34,16 +34,6 @@ shape = SubResource("CircleShape2D_pqafs")
 offset_right = 249.0
 offset_bottom = 249.0
 
-[node name="Tiempo" type="Label" parent="." unique_id=797618222]
-offset_left = 36.000004
-offset_top = 164.0
-offset_right = 99.92857
-offset_bottom = 195.24599
-scale = Vector2(2.8, 2.8)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]

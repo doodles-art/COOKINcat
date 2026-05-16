@@ -4,7 +4,9 @@ extends Area2D
 
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
-@onready var icono:Panel=$Panel
+@onready var fondo:Panel=$Panel
+@onready var icono_cultivo:TextureRect=$Icono
+@onready var contador_tiempo:Label=$Tiempo
 
 
 
@@ -18,10 +20,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:  #se lee casda frame
 	#comprobacion para visibilizar las ayudas
 	if BolsilloUi._is_dragging==true: #si se esta arrastrandose
-		icono.visible=true
+		fondo.visible=true
 	
 	else:
-		icono.visible=false
+		fondo.visible=false
 #______________________________________
 #DETECCIÓN DEL ARRASTRE DEL BOLSILLO_UI
 #______________________________________________________________________________________________________________
@@ -41,6 +43,17 @@ func _plantar():
 	if slot_huerto.item!=null: #si en el slot hay algun item ya no plantamos nada
 		return
 	
+	#textura de plantita (esta creciendo
+	icono_cultivo.texture=load("res://Sprites/Sprout.png")
 	
 	#slot_huerto.item =bolsillo_ui_ref.item
 	print("Item plantado: ",bolsillo_dragged.item.nombre)
+
+#maneja la actualizacion de la planta con tiempo
+"""func _proceso_planta():
+	
+	contador_tiempo.text=bolsillo_dragged.item.tiempo
+	#TIEMPO DE COSECHA
+	while contador >0: #mientraS NO SE HAYA ACABADO SU TIEMPO DE COSECHA EL CONTADOR DISMINUYE
+		contador
+"""

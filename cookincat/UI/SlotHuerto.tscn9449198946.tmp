@@ -34,7 +34,7 @@ shape = SubResource("CircleShape2D_pqafs")
 offset_right = 249.0
 offset_bottom = 249.0
 
-[node name="Tiempo" type="Label" parent="." unique_id=797618222]
+[node name="Label" type="Label" parent="." unique_id=797618222]
 offset_left = 36.000004
 offset_top = 164.0
 offset_right = 99.92857
