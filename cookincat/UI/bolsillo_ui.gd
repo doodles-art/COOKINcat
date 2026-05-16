@@ -4,6 +4,8 @@ class_name Bolsillo_UI
 
 var bolsillo:Bolsillo
 
+
+@onready var item :Item #item que contiene el bolsillo UI (nos servira para conocer la info de este al pasarlo al slothueto
 @onready var itemSprite :TextureRect=$CenterContainer/IconoItem
 @onready var itemCantidad:Label=$Label_Cantidad#texto con la cantidad de ese item
 
@@ -36,17 +38,17 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 	#hay un item en el slot
 	else:
 		itemSprite.visible=true
+		item=bolsillo.item #asi puedo acceder a la inmformacion del uitem quje se encuentra en bolsillo/bolsiiloUi
 		itemSprite.texture=load(bolsillo.item.icon_texture_path)
 		itemCantidad.text=str(bolsillo.cantidad)
 
 
-func _gui_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		print("CLICK DETECTADO EN BOLSILLO")
 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
-	 
+	
+	var item_arrastrado=self.item #para saber que item contiene el bolsillo que esdtamos arrastrando y asi poder pasarlo al slothuerto 
+	
 	#si no esta sobre ninguna textura(celda)
 	if bolsillo == null or bolsillo.item == null:
 		return
@@ -61,8 +63,13 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	emit_signal("dragging",self) #mandamos una señal (para slot_huerto ) junto con el bolsillo que estamos arrastrando
 	print("dag detectafdom")
 	
-	#cuando arrastras se muestra una preview del objeto al lado del raton
-	var preview := TextureRect.new() #duplica la textura de la celda
+	#cuando arrastras se muestra una preview del objeto al lado del raton (creo junto  a la textura un area 2d y un collider para detectar el slot del huerto
+	var area=Area2D.new()#area preview
+	var collider =CollisionShape2D.new() #colision preview
+	var forma=RectangleShape2D.new()#forma de la colision
+	
+	
+	var preview := TextureRect.new() #duplica la textura de la celda #tectura preview
 	preview.texture = itemSprite.texture
 	#cetnro la preview en el raton que me da toc
 	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -70,10 +77,17 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	preview.custom_minimum_size=Vector2(80,80)
 	preview.position = -preview.custom_minimum_size / 2
 	
+	#forma.size=preview.texture.size.get_size() #el collider mide lo msimos que la imafen
+	collider.shape=forma
 	
-	#para centrar la preview
+	area.position= -preview.custom_minimum_size / 2
+	
+	print (collider)
 	var c=Control.new()
-	c.add_child(preview)
+	area.add_child(preview)
+	area.add_child(collider)
+	c.add_child(area)
+	
 	
 	
 	set_drag_preview(c) ##lo pone debajo del mouse mientras lo arrastras

@@ -17,8 +17,6 @@ func _ready() -> void:
 	
 	 # Conectar mouse_shape_entered en lugar de mouse_entered
 	
-	mouse_shape_entered.connect(_on_mouse_shape_entered)
-	print("SlotHuerto_UI listo - mouse_shape_entered conectado")
 	
 func _on_dragging(bolsillo_ui: Bolsillo_UI) -> void:
 	is_dragging = true
@@ -41,11 +39,12 @@ func _plantar():
 
 
 
-func _on_mouse_shape_entered(shape_idx: int) -> void:
-	pass # Replace with function body.
-
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton and event.pressed:
 		print("CLICK DETECTADO EN SLOT")  # Esto debe aparecer al hacer click
 		if BolsilloUi.is_dragging:
 			_plantar()
+
+
+func _on_area_shape_entered(area: Area2D) -> void:
+	print ("ole ole ole",area)
