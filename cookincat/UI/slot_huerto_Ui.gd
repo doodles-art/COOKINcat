@@ -5,7 +5,7 @@ extends Area2D
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
 @onready var fondo:Panel=$Panel
-@onready var icono_cultivo:TextureRect=$Icono
+@onready var icono_cultivo:TextureRect=$CenterContainer/Icono
 @onready var contador_tiempo:Label=$Tiempo
 
 
