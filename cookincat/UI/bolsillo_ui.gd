@@ -13,7 +13,8 @@ var _is_dragging := false
 var _current_drag_item: Item = null
 @export var current_drag_bolsillo: Bolsillo
 
-signal dragging (bolsillo_ui:Bolsillo_UI) #señal que mando cuando se activa que se esta arrastrando el bolsilloui(y te pasa el bolsill_UI)
+
+	
 
 func is_currently_dragging() -> bool:
 	return _is_dragging
@@ -23,7 +24,7 @@ func get_current_drag_item() -> Item:
 
 func _ready() -> void:
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND #cambo el dibujo del raton
-
+	
 
 #Funcion a la que le pasamos un Item
 func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que quiero meter algo
@@ -54,15 +55,15 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		
 		
 		print ("bolsillo que arrastamos->",bolsillo.id_bolsillo)
-		_is_dragging = true
 		
 		#Lo cargo EN EL AUTOLOAD no en el nodo (para que se quede y no me devuelva null)
+		BolsilloUi._is_dragging = true
 		BolsilloUi._current_drag_item = bolsillo.item
 		BolsilloUi.current_drag_bolsillo = bolsillo
 		
 		
 		
-		print("current item ",current_drag_bolsillo)
+		print("current item ",BolsilloUi._current_drag_item)
 		
 		print("dag detectafdom")
 		
@@ -103,3 +104,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		}
 	
 	return null
+
+func _drop_data(at_position: Vector2, data: Variant) -> void: #para cuando suelta (hace el drop
+	BolsilloUi._is_dragging = false
+	BolsilloUi.current_drag_bolsillo = null

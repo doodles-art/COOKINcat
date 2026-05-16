@@ -6,7 +6,8 @@ class_name Inventory
 signal inventario_actualizado_suma (bolsillo) #le paso junto con la señal el bolsillo que sumo
 signal inventario_actualizado_resta (bolsillo)
 signal cantidad_actualizada
-#signal accesoSQL
+
+
 
 var db:SQLite
 
