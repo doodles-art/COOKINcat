@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cva7jr8g5ysiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqde7"]
+bg_color = Color(0.737193, 0.7371929, 0.7371929, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu1b0"]
+
+[node name="Slot_Tienda" type="Control" unique_id=1768810489]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=325293157]
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="Background" type="Panel" parent="CenterContainer" unique_id=2139570932]
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lqde7")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1543152193]
+custom_minimum_size = Vector2(94, 94)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer" unique_id=323016929]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_mu1b0")
+
+[node name="Label" type="Label" parent="." unique_id=838139370]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 60.0
+offset_right = 64.2647
+offset_bottom = 86.47058
+scale = Vector2(1.36, 1.36)
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+horizontal_alignment = 1
+vertical_alignment = 1

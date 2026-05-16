@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3cw143iqeyaf"]
 
 [ext_resource type="PackedScene" uid="uid://cqpgb6sbeyjlb" path="res://ESCENAS/MenuPausa.tscn" id="1_ity61"]
+[ext_resource type="PackedScene" uid="uid://cva7jr8g5ysiu" path="res://Slot_Tienda.tscn" id="1_td34g"]
 [ext_resource type="PackedScene" uid="uid://b16kcwhcqvfor" path="res://ESCENAS/Pick_Scene_Shop.tscn" id="2_lgxyn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgxyn"]
@@ -44,6 +45,64 @@ offset_top = 43.0
 offset_right = 899.0
 offset_bottom = 615.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_td34g")
+
+[node name="BUY" type="GridContainer" parent="CanvasLayer" unique_id=1614830184]
+offset_left = 67.0
+offset_top = 109.0
+offset_right = 287.51282
+offset_bottom = 421.1795
+scale = Vector2(1.56, 1.56)
+size_flags_vertical = 4
+columns = 2
+
+[node name="Slot_Tienda" parent="CanvasLayer/BUY" unique_id=1768810489 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda2" parent="CanvasLayer/BUY" unique_id=1224919449 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda3" parent="CanvasLayer/BUY" unique_id=1078958872 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda4" parent="CanvasLayer/BUY" unique_id=1530484292 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda5" parent="CanvasLayer/BUY" unique_id=475598815 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="BUY2" type="GridContainer" parent="CanvasLayer" unique_id=1027096172]
+offset_left = 535.00006
+offset_top = 96.94501
+offset_right = 748.7468
+offset_bottom = 389.945
+scale = Vector2(1.635, 1.635)
+size_flags_vertical = 4
+columns = 2
+
+[node name="Slot_Tienda" parent="CanvasLayer/BUY2" unique_id=1210811052 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda2" parent="CanvasLayer/BUY2" unique_id=81288032 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda3" parent="CanvasLayer/BUY2" unique_id=1674383958 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda4" parent="CanvasLayer/BUY2" unique_id=321491771 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
+
+[node name="Slot_Tienda5" parent="CanvasLayer/BUY2" unique_id=1805660051 instance=ExtResource("1_td34g")]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 2
 
 [node name="Letrero" type="CanvasLayer" parent="CanvasLayer" unique_id=780589146]
 
@@ -97,5 +156,5 @@ metadata/_edit_use_anchors_ = true
 visible = false
 offset_left = 18.0
 offset_top = -7.0
-offset_right = 774.632
+offset_right = 774.6321
 offset_bottom = 563.568
