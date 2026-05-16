@@ -46,5 +46,12 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
 			_plantar()
 
 
-func _on_area_shape_entered(area: Area2D) -> void:
-	print ("ole ole ole",area)
+
+
+func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("FUERA")
+
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+
+	print ("DENTRO",area)

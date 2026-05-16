@@ -47,8 +47,6 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
 	
-	var item_arrastrado=self.item #para saber que item contiene el bolsillo que esdtamos arrastrando y asi poder pasarlo al slothuerto 
-	
 	#si no esta sobre ninguna textura(celda)
 	if bolsillo == null or bolsillo.item == null:
 		return
