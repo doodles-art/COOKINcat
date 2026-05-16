@@ -11,7 +11,7 @@ var bolsillo:Bolsillo
 
 var _is_dragging := false
 var _current_drag_item: Item = null
-var current_drag_bolsillo: Bolsillo = null
+@export var current_drag_bolsillo: Bolsillo
 
 signal dragging (bolsillo_ui:Bolsillo_UI) #señal que mando cuando se activa que se esta arrastrando el bolsilloui(y te pasa el bolsill_UI)
 
@@ -22,11 +22,8 @@ func get_current_drag_item() -> Item:
 	return _current_drag_item
 
 func _ready() -> void:
-	
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND #cambo el dibujo del raton
-		
-		
-	gui_input.connect(_on_gui_input)
+
 
 #Funcion a la que le pasamos un Item
 func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que quiero meter algo
@@ -50,7 +47,6 @@ func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
 	if bolsillo.item.tipo=="Semilla": #si es de tippo semilla se puede arrastrar
-		mouse_default_cursor_shape = Control.CURSOR_DRAG
 		#si no esta sobre ninguna textura(celda)
 		if bolsillo == null or bolsillo.item == null:
 			return
@@ -59,10 +55,15 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		
 		print ("bolsillo que arrastamos->",bolsillo.id_bolsillo)
 		_is_dragging = true
-		_current_drag_item = bolsillo.item
-		current_drag_bolsillo = bolsillo
 		
-		emit_signal("dragging",self) #mandamos una señal (para slot_huerto ) junto con el bolsillo que estamos arrastrando
+		#Lo cargo EN EL AUTOLOAD no en el nodo (para que se quede y no me devuelva null)
+		BolsilloUi._current_drag_item = bolsillo.item
+		BolsilloUi.current_drag_bolsillo = bolsillo
+		
+		
+		
+		print("current item ",current_drag_bolsillo)
+		
 		print("dag detectafdom")
 		
 		#cuando arrastras se muestra una preview del objeto al lado del raton (creo junto  a la textura un area 2d y un collider para detectar el slot del huerto
@@ -78,11 +79,11 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		preview.custom_minimum_size=Vector2(80,80)
 		preview.position = -preview.custom_minimum_size / 2
-		
-		#forma.size=preview.texture.size.get_size() #el collider mide lo msimos que la imafen
+	
+	
 		collider.shape=forma
 		
-		area.position= -preview.custom_minimum_size / 2
+		#area.position= -preview.custom_minimum_size / 2
 		
 		print (collider)
 		var c=Control.new()
@@ -102,10 +103,3 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		}
 	
 	return null
-
-
-
-func _on_gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			print("Click en bolsillo UI")
