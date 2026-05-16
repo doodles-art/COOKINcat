@@ -17,8 +17,7 @@ corner_radius_bottom_left = 120
 [sub_resource type="CircleShape2D" id="CircleShape2D_pqafs"]
 radius = 123.146255
 
-[node name="SlotHuerto" type="StaticBody2D" unique_id=880191865]
-input_pickable = true
+[node name="SlotHuerto" type="Area2D" unique_id=1475480716]
 script = ExtResource("1_0ljki")
 slot_huerto = SubResource("Resource_ik5d1")
 
@@ -30,3 +29,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pqafs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252184079]
 position = Vector2(123, 124)
 shape = SubResource("CircleShape2D_pqafs")
+
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]

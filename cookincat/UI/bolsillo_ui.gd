@@ -7,17 +7,21 @@ var bolsillo:Bolsillo
 @onready var itemSprite :TextureRect=$CenterContainer/IconoItem
 @onready var itemCantidad:Label=$Label_Cantidad#texto con la cantidad de ese item
 
-#variables para el sistema de DRAG&DROP
-var draggable=false #¿se puede arrastrar?
-var is_inside_dropable=false #¿esta dentro de un objeto en ek que se puede dropear?
-var is_dragging=false
-var boddy_ref
+var _is_dragging := false
+var _current_drag_item: Item = null
+var current_drag_bolsillo: Bolsillo = null
 
-signal Dragging (bolsillo_ui:Bolsillo_UI) #señal que mando cuando se activa que se esta arrastrando el bolsilloui(y te pasa el bolsill_UI)
+signal dragging (bolsillo_ui:Bolsillo_UI) #señal que mando cuando se activa que se esta arrastrando el bolsilloui(y te pasa el bolsill_UI)
+
+func is_currently_dragging() -> bool:
+	return _is_dragging
+	
+func get_current_drag_item() -> Item:
+	return _current_drag_item
 
 func _ready() -> void:
-	print("NODO ACTUAL:",self)
-	print("HIJOS:",get_children())
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND #cambo el dibujo del raton
+	gui_input.connect(_on_gui_input)
 
 #Funcion a la que le pasamos un Item
 func _set_bolsillo(bolsillo:Bolsillo): #le paso algo de tipo Bolsillo en el que quiero meter algo
@@ -42,17 +46,20 @@ func _gui_input(event):
 
 #funcion llamada cuando haces click y empiezas a desplazar (devuelves los datos de lo que quieres mover)
 func _get_drag_data(at_position: Vector2) -> Variant:
-	is_dragging=true
 	 
-	emit_signal("Dragging",bolsillo) #mandamos una señal (para slot_huerto ) junto con el bolsillo que estamos arrastrando
-	
-	print ("bolsillo que arrastamos->",bolsillo.id_bolsillo)
-	
-	print("dag detectafdom")
 	#si no esta sobre ninguna textura(celda)
 	if bolsillo == null or bolsillo.item == null:
 		return
-	 
+		
+	
+	
+	print ("bolsillo que arrastamos->",bolsillo.id_bolsillo)
+	_is_dragging = true
+	_current_drag_item = bolsillo.item
+	current_drag_bolsillo = bolsillo
+	
+	emit_signal("dragging",self) #mandamos una señal (para slot_huerto ) junto con el bolsillo que estamos arrastrando
+	print("dag detectafdom")
 	
 	#cuando arrastras se muestra una preview del objeto al lado del raton
 	var preview := TextureRect.new() #duplica la textura de la celda
@@ -84,4 +91,11 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 
 #Si pasa el can_drop data ocurre este (decidimos que hacer con lo que se esta arrastrando)
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	pass
+	_is_dragging = false
+	_current_drag_item = null
+	current_drag_bolsillo = null
+	
+func _on_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			print("Click en bolsillo UI")

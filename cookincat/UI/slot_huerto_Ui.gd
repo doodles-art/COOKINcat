@@ -1,78 +1,51 @@
-extends StaticBody2D
+extends Area2D
 
 #este area sirve para guiar al jugador hacia donde tiene que plantar en el huerto
 
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
-
 @onready var icono:Panel=$Panel
 
 var is_dragging :=false
-var bolsillo_ui :BolsilloUi
+var bolsillo_ui_ref: Bolsillo_UI = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	BolsilloUi.connect("Dragging",Callable(self,"_drop"))#si se envia la señal de quen un bolsillo se esta arrastrando llama a la funcion _drop
+	input_pickable = true
+	# Prueba con otra señal
+	input_event.connect(_on_input_event)
 	
+	 # Conectar mouse_shape_entered en lugar de mouse_entered
 	
+	mouse_shape_entered.connect(_on_mouse_shape_entered)
+	print("SlotHuerto_UI listo - mouse_shape_entered conectado")
 	
-func _drop(bolsillo_ui_drag:BolsilloUi):
-	is_dragging=true
-	bolsillo_ui=bolsillo_ui_drag
+func _on_dragging(bolsillo_ui: Bolsillo_UI) -> void:
+	is_dragging = true
+	bolsillo_ui_ref = bolsillo_ui
 	print("esta arrastrando cuidao")
 	
-func _on_static_body_2d_mouse_entered() -> void: #cuando el raton toque el slot ui
-	print("entro al static body")
-	if is_dragging==true:
-		_Plantar()
+func _on_mouse_shape_enter(shape_idx: int) -> void:
+	print("¡MOUSE DETECTADO!")  # Este print debe aparecer
+	
+	if BolsilloUi.is_dragging:
+		print("Drag activo - vamos a plantar")
+		_plantar()
 	
 	
-	
-func _Plantar():
-	slot_huerto.item=bolsillo_ui.bolsillo.item #cojo el item que habia en el drag y lo guardo en el slot de mi huerto (sobre el que estaba el raton
-"""
-#___________________________
-##SISTEMA DRAG AND DROP##
-#____________________________
+func _plantar():
+	if BolsilloUi.current_drag_item:  # Variable pública
+		slot_huerto.item = BolsilloUi.current_drag_item
+		print("Item plantado: ", slot_huerto.item)
 
-func _can_drop_data(at_position:Vector2, data:Variant ) ->bool:
-	if not is_hovered or not data.has("item"):
-		print("np")
-		return false
-		
-	var item=data["item"]
-	
-	#solo acepta semillas
-	return item.tipo=="semilla"
-	
-func _drop_data(at_position:Vector2, data: Variant)->void:
-	if is_hovered==false:
-		return
-		
-	var item=data["item"]
-	var bolsillo_origen =data["slot"]
-	
-	#si ya hay algo plantado no planto nada
-	if slot_huerto.item!=null:
-		return
-		
-	#PLANTAR 
-	slot_huerto.item=item
-	slot_huerto.tiempo=item.tiempo
-	#resto 1 al inventario (-1 cantidad al bolsillo=
-	Inventario.bolsillo._restarItem(bolsillo_origen.id_bolsillo,1) #le resto la cantidasd de uno y ya que maneje el inventario las catnidades si tiene que quital algun bolsillo, etc...
-	
-	_actualizar_visual()
 
-#______________________________
-#ACTUALIZAMOS LA UI DEL SLOT
-#___________________________
-func _actualizar_visual():
-	if slot_huerto.item==null: #no hay nada plantado
-		icono.visible=true
-		return
-		
-	#si no se cumple lo de arriba llega aquo (hay algo plantado)
-	icono.visible=true
-	icono.texture=load(slot_huerto.item.icon_texture_path)
-"""
+
+
+func _on_mouse_shape_entered(shape_idx: int) -> void:
+	pass # Replace with function body.
+
+func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
+	if event is InputEventMouseButton and event.pressed:
+		print("CLICK DETECTADO EN SLOT")  # Esto debe aparecer al hacer click
+		if BolsilloUi.is_dragging:
+			_plantar()
