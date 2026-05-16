@@ -43,7 +43,10 @@ func _plantar():
 	if slot_huerto.item!=null: #si en el slot hay algun item ya no plantamos nada
 		return
 	
-	#textura de plantita (esta creciendo
+	#le resto 1 al bolsillo del item que he plantado (y que el inventario y el inventario Ui se encargen del resto)
+	Inventario._restarItem(BolsilloUi.current_drag_bolsillo.item.id,1)
+	
+	#textura de plantita (esta creciendo)
 	icono_cultivo.texture=load("res://Sprites/Sprout.png")
 	
 	#slot_huerto.item =bolsillo_ui_ref.item
