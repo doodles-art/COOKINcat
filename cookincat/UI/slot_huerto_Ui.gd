@@ -4,11 +4,12 @@ extends Area2D
 
 class_name SlotHuerto_UI
 @export var slot_huerto: SlotHuerto #resource con info del huerto
+@export var item:Item
 @onready var fondo:Panel=$Panel
 @onready var icono_cultivo:TextureRect=$CenterContainer/Icono
 @onready var contador_tiempo:Label=$Tiempo
 
-
+signal update_bolsillo
 
 var is_dragging :=false
 var bolsillo_dragged: Bolsillo = null
@@ -24,6 +25,27 @@ func _process(delta: float) -> void:  #se lee casda frame
 	
 	else:
 		fondo.visible=false
+		
+	#compruebo si se ha actualizado el bolsilloUi
+	#Slo
+
+#Funcion a la que le pasamos un Item
+func _set_slotHuerto(slot_huerto:SlotHuerto): #le paso algo de tipo Bolsillo en el que quiero meter algo
+	self.slot_huerto=slot_huerto
+	
+	#no hay ningun item en el slot
+	if slot_huerto.item ==null:
+		icono_cultivo.visible=false
+		contador_tiempo.text=""
+		return
+	
+	#hay un item en el slot
+	else:
+		icono_cultivo.visible=true
+		item=slot_huerto.item #asi puedo acceder a la inmformacion del uitem quje se encuentra en bolsillo/bolsiiloUi
+		icono_cultivo.texture=load(slot_huerto.item.icon_texture_path)
+		contador_tiempo.text=str(slot_huerto.tiempo)
+
 #______________________________________
 #DETECCIÓN DEL ARRASTRE DEL BOLSILLO_UI
 #______________________________________________________________________________________________________________
@@ -45,6 +67,8 @@ func _plantar():
 	
 	#le resto 1 al bolsillo del item que he plantado (y que el inventario y el inventario Ui se encargen del resto)
 	Inventario._restarItem(BolsilloUi.current_drag_bolsillo.item.id,1)
+	
+	#emit_signal("update_bolsillo")
 	
 	#textura de plantita (esta creciendo)
 	icono_cultivo.texture=load("res://Sprites/Sprout.png")
